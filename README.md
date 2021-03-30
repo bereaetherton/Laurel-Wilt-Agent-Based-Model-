@@ -3,6 +3,8 @@
 
 #av.centers1132.csv is a matrix containing data from the Miami avocado groves
 
+#Download these two files, and run through the script ABMgit.R
+
 #Berea Etherton
 
 
