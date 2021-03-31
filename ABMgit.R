@@ -1,10 +1,3 @@
-#some notes first:
-#this is hardcoded for this data specifically
-#My next steps are to make it so that you can read in a distance matrix and simulate management strategies
-#the function that wraps everything together is at the bottom
-
-#I also am working on incorperating carrots and sticks
-#they are not yet present in this simulation
 
 library(readr)
 library(readxl)
@@ -82,18 +75,18 @@ avocado.groves<-mutate(avocado.groves,Perc.low=0,Perc.medium=0,Perc.high=0)
 for(i in 1:size){
   if(avocado.groves[i,3]=="low"){ #if you practice low management
     avocado.groves[i,7]<-avocado.groves[i,5] #your income reflects your beliefs
-    avocado.groves[i,8]<-avocado.groves[i,5]-sample(0:sd.income,1)*avocado.groves[i,4] #and all other strategies earn you less
-    avocado.groves[i,9]<-avocado.groves[i,5]-sample(0:sd.income,1)*avocado.groves[i,4] #this will also earn you less
+    avocado.groves[i,8]<-avocado.groves[i,5]-sample(1:sd.income,1)*avocado.groves[i,4] #and all other strategies earn you less
+    avocado.groves[i,9]<-avocado.groves[i,5]-sample(1:sd.income,1)*avocado.groves[i,4] #this will also earn you less
   }
   if(avocado.groves[i,3]=="medium"){ #if you practice medium management
     avocado.groves[i,8]<-avocado.groves[i,5] #your income reflects your beliefs
-    avocado.groves[i,7]<-avocado.groves[i,5]-sample(0:sd.income,1)*avocado.groves[i,4]
-    avocado.groves[i,9]<-avocado.groves[i,5]-sample(0:sd.income,1)*avocado.groves[i,4]
+    avocado.groves[i,7]<-avocado.groves[i,5]-sample(1:sd.income,1)*avocado.groves[i,4]
+    avocado.groves[i,9]<-avocado.groves[i,5]-sample(1:sd.income,1)*avocado.groves[i,4]
   }
   if(avocado.groves[i,3]=="high"){ #if you practice high management
     avocado.groves[i,9]<-avocado.groves[i,5] #your income reflects your beliefs
-    avocado.groves[i,7]<-avocado.groves[i,5]-sample(0:sd.income,1)*avocado.groves[i,4]
-    avocado.groves[i,8]<-avocado.groves[i,5]-sample(0:sd.income,1)*avocado.groves[i,4]
+    avocado.groves[i,7]<-avocado.groves[i,5]-sample(1:sd.income,1)*avocado.groves[i,4]
+    avocado.groves[i,8]<-avocado.groves[i,5]-sample(1:sd.income,1)*avocado.groves[i,4]
   }
 } 
 
