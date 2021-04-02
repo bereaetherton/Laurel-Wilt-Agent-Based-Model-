@@ -26,6 +26,6 @@
 
 EDITS:
 
-(04/01/21): Diseased trees are cleared out at every new year; previously dead trees remained in a grove until the end of the simulation or until the grove has died completley
+(04/02/21): Diseased trees are cleared out at every new year; previously dead trees remained in a grove until the end of the simulation or until the grove has died completley
 
 
