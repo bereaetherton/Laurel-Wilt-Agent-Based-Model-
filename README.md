@@ -15,16 +15,17 @@
 
 #they are not yet present in this simulation
 
-#3. I also need to make it so that diseased trees are cleared out at every new year
 
-#as the code is right now, dead trees remain in a grove until the end of the simulation or until the grove has died completley
-
-#this should only change the income and longevity of smaller groves, the simualtion should not change drastically from this edit
-
-#4. if all things go well with the HiPerGator, I will create a function that repeats this process over multiple simualtions
+#3. if all things go well with the HiPerGator, I will create a function that repeats this process over multiple simualtions
 
 #this step should be easy (praying all things go well with the HiPG
 
 #Happy Simulating :)
 
 # - Berea Etherton
+
+EDITS:
+
+(04/01/21): Diseased trees are cleared out at every new year; previously dead trees remained in a grove until the end of the simulation or until the grove has died completley
+
+
