@@ -323,7 +323,7 @@ how.much.disease.is.there.within.grove<-function(N){
 #how many healthy trees are there in a grove:
 how.many.healthy.trees.are.there<-function(N){
   if(avocado.groves[N-size,10]==1){ #if there is disease in the grove 
-    health<-round(avocado.groves[[N-size,4]]*100-avocado.groves[[N,11]]) #healthy trees= 100 trees per acre - diseased trees(from function above)
+    health<-(avocado.groves[[N-size,12]]-avocado.groves[[N,11]]) #healthy trees= 100 trees per acre - diseased trees(from function above)
     return(health)
   }
   else{ #if there isn't disease
@@ -441,7 +441,7 @@ data.fill.time12<-function(N,t){
   avocado.groves[N,8]<<-perc.stu #new perception
   avocado.groves[N,9]<<-perc.fun #new perception
   avocado.groves[N,10]<<-is.there.disease.here(N,t)
-  avocado.groves[N,11]<<-how.much.disease.is.there.within.grove(N)
+  avocado.groves[N,11]<<-0
   avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N)
   avocado.groves[N,13]<<-0 #new costs per year
   
