@@ -11,7 +11,7 @@ library(dplyr)
 #Files
 
 av.centers<- read_xlsx("av.centers.xlsx")
-# av.centers<-av.centers[1:25,] #for just 2C5 groves 
+# av.centers<-av.centers[1:25,] #for just 25 groves 
 distance<-read_xlsx("Distance.xlsx")
 distance<-as.data.frame(distance)
 # distance<-distance[1:25,1:25] #for just 25 groves
@@ -150,7 +150,7 @@ for(i in 1:size){
 
 #element-wise multiplication:
 social.net <- social.net * distance.net 
-social.net[1:10, 1:10]
+social.net[1:10, 1:10] # displaying only 10 rows
 ###### I am having troubles with this part, the matrix ew-multiplication resulted in 0's
 
 #rescale between 0 and 1:
