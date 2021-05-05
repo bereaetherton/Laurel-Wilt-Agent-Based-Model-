@@ -8,10 +8,10 @@ library(dplyr)
 #Files
 
 av.centers<- read_xlsx("av.centers.xlsx")
-av.centers<-av.centers[1:25,] #for just 25 groves 
+#av.centers<-av.centers[1:50,] #for just 50 groves 
 distance<-read_xlsx("Distance.xlsx")
 distance<-as.data.frame(distance)
-distance<-distance[1:25,1:25] #for just 25 groves
+#distance<-distance[1:50,1:50] #for just 50 groves
 
 ####################################################################################################
 
@@ -46,11 +46,12 @@ stick.perc.increase<-10  #for sticks, what percent of annual income is removed f
 #for now this bit is pretty sloppy 
 
 #assign initial capital, initial stubbornness and the timestep of 0:
-avocado.groves<-mutate(av.centers,capital=av.centers$acres*rnorm(1,mean=mean.income,sd=sd.income))
-avocado.groves<-mutate(avocado.groves,stubbornness=(sample(stubborness.lower.bound:0.1:stubborness.upper.bound,size,replace=TRUE)/10))
-avocado.groves<-mutate(avocado.groves,timestep=0) 
+avocado.groves <-av.centers %>% 
+  mutate(capital = av.centers$acres * rnorm(1, mean = mean.income, sd = sd.income)) %>% 
+  mutate(stubbornness = (sample(stubborness.lower.bound:0.1:stubborness.upper.bound,size,replace=TRUE)/10)) %>% 
+  mutate(timestep = 0)
 
-#make it so there are only three management strategies with high,medium and low management:
+#make it so there are only three management strategies with "high", "medium" and "low" management:
 for(i in 1:size){
   if(avocado.groves[i,6]=="scout & rogue"){
     avocado.groves[i,6]<-"high"
@@ -67,11 +68,11 @@ for(i in 1:size){
 } 
 
 #filter out lat and longitude data:
-avocado.groves<-avocado.groves[,c(9,1,6,5,7,8)]
+avocado.groves <- avocado.groves %>% 
+  select("timestep", "Node", "treat", "acres", "capital", "stubbornness") %>% 
+  #create initial perceptions about growing strategies:
+  mutate(Perc.low=0, Perc.medium= 0, Perc.high= 0)
 
-
-#create initial perceptions about growing strategies:
-avocado.groves<-mutate(avocado.groves,Perc.low=0,Perc.medium=0,Perc.high=0)
 for(i in 1:size){
   if(avocado.groves[i,3]=="low"){ #if you practice low management
     avocado.groves[i,7]<-avocado.groves[i,5] #your income reflects your beliefs
