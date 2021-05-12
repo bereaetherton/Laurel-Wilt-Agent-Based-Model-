@@ -19,5 +19,5 @@ module load R/3.6
 
 ARGS=$(sed -n {SLURM_ARRAY_TASK_ID}p ParameterTable.txt)
 
-Rscript --vanilla /blue/garrett/betherton/LW2020/ABMforHPG.R ${ARGS}
+Rscript --vanilla /home/betherton/gitlocalhpg/Laurel-Wilt-Agent-Based-Model-/ABMforHPG.R ${ARGS}
 date
