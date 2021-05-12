@@ -18,9 +18,6 @@ library(dplyr)
 
 #NOTE: the NODE is the growers number i.e. grower #10. the ROW is the matrix row associated with the 
 #      NODE at a specific time i.e. grower (NODE) #10 at time t=1 may be ROW 1142
-
-
-
 #1 if grower j and k and are linked in comm.net
 #read in NODE number of interest:
 mgmtlinks<-function(j,k){
@@ -524,7 +521,7 @@ the.entire.process(size,120) #this will simulate disease spread and growers deci
 #########################################################################################################
 
 NAME <- paste(ARG[1], ARG[2], ARG[3], ARG[4], ARG[5], ARG[6], sep="_")  
-save.image(paste0("/blue/garrett/betherton/LW2020", "NAME", ".RData"))
+save.image(paste0("/blue/garrett/betherton/LW2020/","ABMModel", "NAME", ".RData"))
 
 #beta.bp<- consider 1.5, 2.0, 2.5 and 3.0
 #beta.sn<- consider 0.5, 1.0, and 1.5
