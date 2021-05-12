@@ -322,6 +322,7 @@ distance<-read_xlsx("Distance.xlsx")
 distance<-as.data.frame(distance)
 distance<-distance[1:50,1:50] #for just 50 groves
 
+
 size<-dim(av.centers)[1] #size of matrix
 mean.income<-5122  #mean income for growers before costs are applied
 sd.income<-750   #standard dev. for growers income before costs
@@ -344,12 +345,18 @@ cost.per.tree.health.high=1  #the cost high management pays per healthy tree
 
 #Parameters
 
-beta.bp<-2.0  #beta value for biphysical network
-beta.sn<-1.5  #beta value for social network
-stubborness.lower.bound<-1 #the range of stubbornness can be between 1 and 10
-stubborness.upper.bound<-10 #this is the upper bound
-money.pot<-150000  #for carrots, the yearly pot of money
-stick.perc.increase<-10  #for sticks, what percent of annual income is removed from grower
+args <- commandArgs(TRUE)
+ARG <- as.numeric(strsplit(args[1], ",")[[1]])
+
+print(ARG)
+
+(beta.bp <- ARG[1]) #2.0  #beta value for biphysical network
+(beta.sn <- ARG[2]) #1.5  #beta value for social network
+(stubborness.lower.bound <- ARG[3])  #1 #the range of stubbornness can be between 1 and 10
+(stubborness.upper.bound <- ARG[4]) #10 #this is the upper bound
+(money.pot <- ARG[5])  #150000  #for carrots, the yearly pot of money
+(stick.perc.increase <- ARG[6]) #10  #for sticks, what percent of annual income is removed from grower
+
 
 ######################################################################################################
 
