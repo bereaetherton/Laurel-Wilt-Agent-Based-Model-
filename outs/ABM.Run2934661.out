@@ -1,0 +1,32 @@
+/home/ralcala/blue_ralcala/Laurel-Wilt-Agent-Based-Model-
+c0700a-s1.ufhpc
+Wed May 12 21:54:13 EDT 2021
+2,1.5,1,10,150000,10
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+[1] 2.0e+00 1.5e+00 1.0e+00 1.0e+01 1.5e+05 1.0e+01
+[1] 2
+[1] 1.5
+[1] 1
+[1] 10
+[1] 150000
+[1] 10
+Error in gzfile(file, "wb") : cannot open the connection
+Calls: save.image -> save -> gzfile
+In addition: Warning message:
+In gzfile(file, "wb") :
+  cannot open compressed file '/home/ralcala/lw2021/ABMModelNAME.RDataTmp', probable reason 'No such file or directory'
+Execution halted
+Warning message:
+In file.remove(outfile) :
+  cannot remove file '~/lw2021/ABMModelNAME.RDataTmp', reason 'No such file or directory'
+Wed May 12 21:59:35 EDT 2021
