@@ -314,10 +314,10 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
 #Files and unchanged paramters
 
 av.centers<- read_xlsx("/blue/garrett/betherton/LW2020/av.centers.xlsx")
-av.centers<-av.centers[1:50,] #for just 50 groves 
+#av.centers<-av.centers[1:50,] #for just 50 groves 
 distance<-read_xlsx("/blue/garrett/betherton/LW2020/Distance.xlsx")
 distance<-as.data.frame(distance)
-distance<-distance[1:50,1:50] #for just 50 groves
+#distance<-distance[1:50,1:50] #for just 50 groves
 
 
 size<-dim(av.centers)[1] #size of matrix
