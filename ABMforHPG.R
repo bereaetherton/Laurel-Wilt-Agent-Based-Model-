@@ -520,7 +520,15 @@ the.entire.process(size,120) #this will simulate disease spread and growers deci
 
 #########################################################################################################
 
-NAME <- paste(ARG[1], ARG[2], ARG[3], ARG[4], ARG[5], ARG[6], sep="_")
+NAME <- paste(as.character(ARG[1]), 
+		as.character(ARG[2]), 
+		as.character(ARG[3]), 
+		as.character(ARG[4]), 
+		as.character(ARG[5]), 
+		as.character(ARG[6]), sep="_")
+
+# saving image 
+
 save.image(paste0("../lw2021/","ABMModel", "NAME", ".RData"))
 
 #beta.bp<- consider 1.5, 2.0, 2.5 and 3.0
