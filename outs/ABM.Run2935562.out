@@ -1,0 +1,25 @@
+/home/ralcala/blue_ralcala/Laurel-Wilt-Agent-Based-Model-
+c0704a-s1.ufhpc
+Wed May 12 23:18:29 EDT 2021
+3.0,1.5,1,10,150000,10
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+[1] 3.0e+00 1.5e+00 1.0e+00 1.0e+01 1.5e+05 1.0e+01
+[1] 3
+[1] 1.5
+[1] 1
+[1] 10
+[1] 150000
+[1] 10
+Error: unexpected symbol in "save.image(paste0("../lw2021/","_ABMModel_, NAME, ".RData"
+Execution halted
+Wed May 12 23:19:43 EDT 2021

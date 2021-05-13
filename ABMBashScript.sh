@@ -8,9 +8,9 @@
 #SBATCH --ntasks=1                    # Run a single task
 #SBATCH --cpus-per-task=1             # Use 1 core
 #SBATCH --mem=30gb                   # Memory limit
-#SBATCH --time=20:00:00               # Time limit hrs:min:sec
+#SBATCH --time=100:00:00               # Time limit hrs:min:sec
 #SBATCH --output=ABM.Run2%j.out   # Standard output and error log
-#SBATCH --array=1-4:1
+#SBATCH --array=1-12:1
 
 pwd;hostname;date
 
@@ -19,5 +19,5 @@ module load R/3.6
 
 ARG=$(sed -n ${SLURM_ARRAY_TASK_ID}p ParameterTable.txt)
 echo ${ARG} 
-Rscript --vanilla /home/betherton/gitlocalhpg/Laurel-Wilt-Agent-Based-Model-/ABMforHPG.R ${ARG}
+Rscript --vanilla ABMforHPG.R ${ARG}
 date
