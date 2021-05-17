@@ -71,13 +71,13 @@ grovebenefit<-function(i,j,t){
 #the break down of this is in the document: 
 cumperbenefit<-function(i,j,t){
   if(i=="low"){
-    c.ben<-avocado.groves[j,6]*avocado.groves[j+size*t,7]+(1-avocado.groves[j,6])*(avocado.groves[j,6]*avocado.groves[j+size*t,7]+(1-avocado.groves[j,6])*grovebenefit(i,j,t))
+    c.ben<-avocado.groves[j,6]*avocado.groves[j+size*(t-1),7]+(1-avocado.groves[j,6])*(avocado.groves[j,6]*avocado.groves[j+size*(t-1),7]+(1-avocado.groves[j,6])*grovebenefit(i,j,(t-1)))
   }
   if(i=="medium"){
-    c.ben<-avocado.groves[j,6]*avocado.groves[j+size*t,8]+(1-avocado.groves[j,6])*(avocado.groves[j,6]*avocado.groves[j+size*t,8]+(1-avocado.groves[j,6])*grovebenefit(i,j,t))
+    c.ben<-avocado.groves[j,6]*avocado.groves[j+size*(t-1),8]+(1-avocado.groves[j,6])*(avocado.groves[j,6]*avocado.groves[j+size*(t-1),8]+(1-avocado.groves[j,6])*grovebenefit(i,j,(t-1)))
   }
   if(i=="high"){
-    c.ben<-avocado.groves[j,6]*avocado.groves[j+size*t,9]+(1-avocado.groves[j,6])*(avocado.groves[j,6]*avocado.groves[j+size*t,9]+(1-avocado.groves[j,6])*grovebenefit(i,j,t))
+    c.ben<-avocado.groves[j,6]*avocado.groves[j+size*(t-1),9]+(1-avocado.groves[j,6])*(avocado.groves[j,6]*avocado.groves[j+size*(t-1),9]+(1-avocado.groves[j,6])*grovebenefit(i,j,(t-1)))
   }
   return(c.ben)
 }
@@ -156,7 +156,7 @@ how.much.did.this.cost.monthly<-function(N){
 #a function to calculate the new yearly costs:
 how.much.did.this.cost.newyear<-function(N){
   if(avocado.groves[N-size,3]=="low"){ #if you practice no management
-    money<-avocado.groves[[N-size,11]]*loss.from.yeild+avocado.groves[[N-size,13]]
+    money<-avocado.groves[[N-size,11]]*loss.from.yeild+avocado.groves[[N-size,13]]+stick(N)
   } #costs(t+1)=sick.trees(t)*yearly.loss.from.yield + costs(t)
   else if(avocado.groves[N-size,3]=="medium"){ #if you practice medium management
     money<-avocado.groves[[N-size,11]]*loss.from.yeild+(avocado.groves[[N-size,12]])*cost.per.tree.health.med+avocado.groves[[N-size,11]]*cost.per.tree.sick.medium+avocado.groves[[N-size,13]]
@@ -188,7 +188,7 @@ is.there.disease.here<-function(N,t){
 #a function for filling in data by the month
 data.fill.monthly<-function(N,t){
   
-  cash<-how.much.did.this.cost.monthly(N)
+  cash<-carrot(N)
   
   avocado.groves[N,1]<<-t
   avocado.groves[N,2]<<-avocado.groves[N-size,2]
@@ -204,7 +204,7 @@ data.fill.monthly<-function(N,t){
   avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N)
   avocado.groves[N,13]<<-cash
   
-  if(avocado.groves[N-size,12]<=0 | avocado.groves[N-size,5]<=0){ #if no more trees or money
+  if(avocado.groves[N-size,12]<=0 | avocado.groves[N-size,5]<=0){
     avocado.groves[N,3]<<-"dead"
     avocado.groves[N,5]<<--1
     avocado.groves[N,10]<<--1
@@ -217,12 +217,10 @@ data.fill.monthly<-function(N,t){
 #a function for filling in data for the turn of the new year: 
 data.fill.time12<-function(N,t){
   
-  #new percieved benefits from functions above:
-  perc.not<-cumperbenefit("low",N-size*t,t-1) 
+  perc.not<-cumperbenefit("low",N-size*t,t-1)
   perc.stu<-cumperbenefit("medium",N-size*t,t-1)
   perc.fun<-cumperbenefit("high",N-size*t,t-1)
   
-  #if one management has a higher benefit, grower will change strategy
   if(perc.not>perc.fun && perc.not>perc.stu){
     man<-"low"
   }
@@ -237,19 +235,19 @@ data.fill.time12<-function(N,t){
   
   avocado.groves[N,1]<<-t
   avocado.groves[N,2]<<-avocado.groves[N-size*t,2]
-  avocado.groves[N,3]<<-man #new management straetgy
+  avocado.groves[N,3]<<-man
   avocado.groves[N,4]<<-avocado.groves[N-size*t,4]
-  avocado.groves[N,5]<<-rnorm(1,mean=mean.income,sd=sd.income)*avocado.groves[N-size,4]-cash #new income - costs from last year
+  avocado.groves[N,5]<<-avocado.groves[N-size,12]*51.22-cash
   avocado.groves[N,6]<<-avocado.groves[N-size*t,6]
-  avocado.groves[N,7]<<-perc.not #new perception
-  avocado.groves[N,8]<<-perc.stu #new perception
-  avocado.groves[N,9]<<-perc.fun #new perception
+  avocado.groves[N,7]<<-perc.not
+  avocado.groves[N,8]<<-perc.stu
+  avocado.groves[N,9]<<-perc.fun
   avocado.groves[N,10]<<-is.there.disease.here(N,t)
   avocado.groves[N,11]<<-0
   avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N)
-  avocado.groves[N,13]<<-0 #new costs per year
+  avocado.groves[N,13]<<-0
   
-  if(avocado.groves[N-size,12]<=0 | avocado.groves[N-size,5]<=0){ #if no more trees or no money
+  if(avocado.groves[N-size,12]<=0 | avocado.groves[N-size,5]<=0){
     avocado.groves[N,3]<<-"dead"
     avocado.groves[N,5]<<--1
     avocado.groves[N,10]<<--1
@@ -265,25 +263,42 @@ data.fill.time12<-function(N,t){
 #I am still working on this bit
 #So ignore this for now
 
-stick<-function(N,t){
-  s<-sample(c(0,1),1,prob=c(0.6,0.4))
-  if(s==0){
+stick<-function(N){
+  if(avocado.groves[N-size,3]=="high" || avocado.groves[N-size,3]=="medium"){
     return(0)
   }
   else{
-    mny<-avocado.groves[[N-size*t,4]]*(stick.perc.increase)
-    return(mny)
+    s<-sample(c(0,1),1,prob=c(1-pcos,pcos))
+    if(s==0){
+      return(0)
+    }
+    else{
+      if(avocado.groves[N-size,10]==1){
+        mny<-avocado.groves[[N-size,5]]*(stick.perc.increase/100)
+        return(mny)
+      }
+      else{
+        return(0)
+      }
+    }
   }
 }
 
 carrot<-function(N){
-  if(money.pot<=0){
-    return(0)
+  if(avocado.groves[N-size,3]=="low"){
+    money<-how.much.did.this.cost.monthly(N)
+    return(money)
   }
   else{
-    money.pot<<-money.pot-avocado.groves[[N,13]]*0.5
-    costs.covered<-avocado.groves[[N,13]]*0.5
-    return(costs.covered)
+    if(money.pot<=0){
+      money<-how.much.did.this.cost.monthly(N)
+      return(money)
+    }
+    else{
+      money.pot<<-money.pot-how.much.did.this.cost.monthly(N)*0.5
+      costs.covered<-how.much.did.this.cost.monthly(N)*0.5
+      return(costs.covered)
+    }
   }
 }
 
@@ -478,6 +493,15 @@ for(i in 1:size){
     comm.net[i,j]<-cn
   }
 } 
+	
+for(i in 1:size){
+  for(j in 1:size){
+    if(comm.net[i,j]==1){
+      comm.net[j,i]<-1
+    }
+  }
+}
+
 comm.net<-as.data.frame(comm.net)
 colnames(comm.net)<-1:size
 #View(comm.net)
@@ -534,17 +558,5 @@ NAME <- paste(as.character(ARG[1]),
 
 save.image(paste0("../lw2021/","_ABMModel_", NAME, ".RData"))
 
-#beta.bp<- consider 1.5, 2.0, 2.5 and 3.0
-#beta.sn<- consider 0.5, 1.0, and 1.5
-#stubborness.lower.bound<- consider 1, 1 and 5 (respectively below)
-#stubborness.upper.bound<- consider 10, 5 and 10 (respectively above)
-#money.pot<- consider 50000, 100000 and 150000
-#stick.perc.increase<- consider 10, 20 and 30
-
-#how to create a loop to run through paramters for me
-#how to store all this data
-#how to print info about the progress in HpG
-#how to save progress even if the program doesn't finish
-#using Git
 
 
