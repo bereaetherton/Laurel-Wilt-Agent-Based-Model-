@@ -10,7 +10,7 @@
 #SBATCH --mem=8gb                   # Memory limit
 #SBATCH --time=100:00:00               # Time limit hrs:min:sec
 #SBATCH --output=ABM.Run2%j.out   # Standard output and error log
-#SBATCH --array=1-12:1
+#SBATCH --array=1-14:1
 
 pwd;hostname;date
 
