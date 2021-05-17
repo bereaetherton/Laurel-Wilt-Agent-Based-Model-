@@ -348,6 +348,8 @@ cost.per.tree.sick.medium=10 #the cost medium management pays per sick tree
 cost.per.tree.sick.high=20  #the cost high management pays per sick tree
 cost.per.tree.health.med=0.5  #the cost medium management pays per healthy tree
 cost.per.tree.health.high=1  #the cost high management pays per healthy tree
+pcos<-0.6 #60% chance of negligent growers getting penalized
+stick.perc.increase<-10  #for sticks, what percent of annual income is removed from grower
 
 ##################################################################################################################
 
