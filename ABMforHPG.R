@@ -326,6 +326,20 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
 
 ###################################################################################################################
 
+#initializing a for loop to repeat the simulation 400 times	
+
+ULTIMATE.MAT<-matrix(0,nrow=400,ncol=33)
+colnames(ULTIMATE.MAT)<-c("Percent Grove Remaining","# Inital Low","# Inital Med", "# Inital High", "# Final Low","# Final Med","# Final High", 
+                          "0.1 A","0.2 A","0.3 A","0.4 A","0.5 A","0.6 A","0.7 A","0.8 A","0.9 A","1.0 A","95th Finances Inital",
+                          "5th Finances  Inital","95th Finances Final","5th Finances Final",
+                          "95th Disease","5th Disease", "0.1 S","0.2 S","0.3 S","0.4 S","0.5 S",
+                          "0.6 S","0.7 S","0.8 S","0.9 S","1.0 S") #data being save from each simulation
+
+for(W in 1:400){
+
+###################################################################################################################
+
+
 #Files and unchanged paramters
 
 av.centers<- read_xlsx("/blue/garrett/betherton/LW2020/av.centers.xlsx")
@@ -545,6 +559,140 @@ bp.net<-function(node1,node2){
 the.entire.process(size,120) #this will simulate disease spread and growers decisions over 10 years (120 months)
 
 #########################################################################################################
+
+#data to save at each simulation
+
+#calculate percent lost at the end of the simulation
+
+#sum(avocado.groves[0:size,12])
+final.trees<-0
+for(i in 1:size){
+  if(avocado.groves[size*120+i,12]==-1){
+    final.trees=final.trees+0
+  }
+  else{
+    final.trees=final.trees+avocado.groves[[size*120+i,12]]
+  }
+}
+jazz<-(final.trees/sum(avocado.groves[0:size,12]))*100
+#jazz
+
+#calculate the total of each strat at the beginning and end of the simulation
+
+carl<-matrix(0,nrow=10,ncol=4)
+colnames(carl)<-c("low","medium","high","dead")
+for(i in 1:10){
+  carl[i,1]<-length(which(avocado.groves[(size*(i-1)*12+1):(size*(i-1)*12+size),3]=="low"))
+  carl[i,2]<-length(which(avocado.groves[(size*(i-1)*12+1):(size*(i-1)*12+size),3]=="medium"))
+  carl[i,3]<-length(which(avocado.groves[(size*(i-1)*12+1):(size*(i-1)*12+size),3]=="high"))
+  carl[i,4]<-length(which(avocado.groves[(size*(i-1)*12+1):(size*(i-1)*12+size),3]=="dead"))
+}
+#View(carl)
+
+#calculate average change across stubbornness
+
+toby.mat<-matrix(0,nrow=2,ncol=size)
+for(i in 1:size){
+  toby<-filter(avocado.groves,avocado.groves$node==i)
+  toby.count<-0
+  for(j in 1:119){
+    if(toby[j,3]!=toby[j+1,3] && toby[j+1,3]!="dead"){
+      toby.count=toby.count+1
+    }
+  }
+  toby.mat[1,i]<-avocado.groves[[i,6]]
+  toby.mat[2,i]<-toby.count 
+}#a place holder mat with stubbornness and # of changes
+
+ab.stb<-matrix(0,nrow=2,ncol=10)
+for(i in stubborness.lower.bound:stubborness.upper.bound){
+  ab.stb[1,i]<-(i/10)
+  ab.stb[2,i]<-sum(toby.mat[2,which(toby.mat[1,]==(i/10))])/length(which(toby.mat[1,]==(i/10)))
+}#this shows AVERAGE number of changes throughout a simulation for each stubbornness value
+#View(ab.stb)
+
+#calculate 95th and 5th percentile of finances
+
+money95.1<-order(avocado.groves[1:size,5],decreasing=FALSE)
+money95.1<-as.matrix(avocado.groves[money95.1,5])
+n1<-round(0.95*length(money95.1))
+#sum(money95.1[1:n1])/n1
+n2<-round(0.05*length(money95.1))
+#sum(money95.1[1:n2])/n2
+money95.120<-order(avocado.groves[(size*10*12+1):(size*10*12+size),5],decreasing=FALSE)
+money95.120<-as.matrix(avocado.groves[money95.120,5])
+n3<-round(0.95*length(money95.120))
+#sum(money95.120[1:n3])/n3
+n4<-round(0.05*length(money95.120))
+#sum(money95.120[1:n4])/n4
+
+#calculate 95th and 5th percentile of grove infections
+
+prop95.1<-avocado.groves[(size*10*12+1):(size*10*12+size),12]/avocado.groves[1:size,12]
+prop95.1<-as.matrix(prop95.1)
+for(i in 1:size){
+  if(prop95.1[i]<0){
+    prop95.1[i]<-0
+  }
+}
+p<-order(prop95.1,decreasing=FALSE)
+prop95.1<-prop95.1[p]
+prop95.1<-as.matrix(prop95.1)
+n5<-round(0.95*length(prop95.1))
+#sum(prop95.1[1:n5])/n5
+n6<-round(0.05*length(prop95.1))
+#sum(prop95.1[1:n6])/n6
+
+#calculate percent infected at end by stubborneess
+
+
+bob.mat<-matrix(0,nrow=2,ncol=10)
+for(i in 1:10){
+  
+  bob<-filter(avocado.groves[1:size,],avocado.groves[1:size,6]==(i/10))
+  obo<-filter(avocado.groves[(size*10*12+1):(size*10*12+size),],avocado.groves[(size*10*12+1):(size*10*12+size),6]==(i/10))
+  
+  if(dim(bob)[1]==0){
+    bob.mat[1,i]<-(i/10)
+    bob.mat[2,i]<-0
+  }
+  else{
+    for(k in 1:dim(obo)[1]){
+      if(obo[k,12]==-1){
+        obo[k,12]<-0
+      }
+    }
+    
+    bob.mat[1,i]<-(i/10)
+    bob.mat[2,i]<-sum(obo[,12])/sum(bob[,12])
+  }
+}
+#View(bob.mat)
+
+#########################################################################################################################
+
+#saving data into the output matrix	
+	
+ULTIMATE.MAT[W,1]<-jazz
+ULTIMATE.MAT[W,2:4]<-carl[1,1:3]
+ULTIMATE.MAT[W,5:7]<-carl[10,1:3]
+ULTIMATE.MAT[W,8:17]<-ab.stb[2,1:10]
+ULTIMATE.MAT[W,18]<-sum(money95.1[1:n1])/n1
+ULTIMATE.MAT[W,19]<-sum(money95.1[1:n2])/n2
+ULTIMATE.MAT[W,20]<-sum(money95.120[1:n3])/n3
+ULTIMATE.MAT[W,21]<-sum(money95.120[1:n4])/n4
+ULTIMATE.MAT[W,22]<-sum(prop95.1[1:n5])/n5
+ULTIMATE.MAT[W,23]<-sum(prop95.1[1:n6])/n6
+ULTIMATE.MAT[W,24:33]<-bob.mat[2,1:10]
+
+print(W)
+
+}
+	
+#########################################################################################################
+	
+	
+	
 
 NAME <- paste(ARG[1], ARG[2], ARG[3], ARG[4], ARG[5], ARG[6], sep="_")  
 save.image(paste0("/blue/garrett/betherton/LW2020/","ABMModel", NAME, ".RData"))
