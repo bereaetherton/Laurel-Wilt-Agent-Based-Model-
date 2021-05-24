@@ -45,7 +45,7 @@ mgmtlevel<-function(i,k,t){
 mgmtconnect<-function(i,j,t){
   count<-0
   for (w in 1:size){
-    count<-count+(mgmtlevel(i,w,t)*mgmtlinks(j,w))
+    count<-count+(mgmtlevel(i,w,t)*mgmtlinks(j,w)) #mgmtlevel function lines 34-41; mgmtlinks function lines 23-30
   }
   return(count)
 }
@@ -55,9 +55,9 @@ mgmtconnect<-function(i,j,t){
 grovebenefit<-function(i,j,t){
   av<-0
   for(w in 1:size){
-    av<-av+(avocado.groves[[w+size*t,5]]*mgmtlevel(i,w,t)*mgmtlinks(j,w))
+    av<-av+(avocado.groves[[w+size*t,5]]*mgmtlevel(i,w,t)*mgmtlinks(j,w)) #mgmtlevel function lines 34-41; mgmtlinks function lines 23-30
   }
-  gb<-av/(mgmtconnect(i,j,t))
+  gb<-av/(mgmtconnect(i,j,t)) #mgmtconnect function lines 45-51
   if(is.finite(gb)==TRUE){
     return(gb)
   }
@@ -80,7 +80,7 @@ cumperbenefit<-function(i,j,t){
     c.ben<-avocado.groves[j,6]*avocado.groves[j+size*(t-1),9]+(1-avocado.groves[j,6])*(avocado.groves[j,6]*avocado.groves[j+size*(t-1),9]+(1-avocado.groves[j,6])*grovebenefit(i,j,(t-1)))
   }
   return(c.ben)
-}
+} #grovebenefit function lines 55-67
 
 #########################################################################################################
 
@@ -177,7 +177,7 @@ is.there.disease.here<-function(N,t){
   }
   else{
     for(i in 1:size){ #otherwise...
-      if(avocado.groves[i+size*(t-1),10]==1 && bp.net(N-size*t,i)==1){ 
+      if(avocado.groves[i+size*(t-1),10]==1 && bp.net(N-size*t,i)==1){ #bp.net function lines 551-555
         return(1) #if there is disease at grove i, and the biophysical network returns i, there will be movement
       }
     }
@@ -188,7 +188,7 @@ is.there.disease.here<-function(N,t){
 #a function for filling in data by the month
 data.fill.monthly<-function(N,t){
   
-  cash<-carrot(N)
+  cash<-carrot(N) #carrot function lines 287-303
   
   avocado.groves[N,1]<<-t
   avocado.groves[N,2]<<-avocado.groves[N-size,2]
@@ -199,10 +199,10 @@ data.fill.monthly<-function(N,t){
   avocado.groves[N,7]<<-avocado.groves[N-size,7]
   avocado.groves[N,8]<<-avocado.groves[N-size,8]
   avocado.groves[N,9]<<-avocado.groves[N-size,9]
-  avocado.groves[N,10]<<-is.there.disease.here(N,t)
-  avocado.groves[N,11]<<-how.much.disease.is.there.within.grove(N)
-  avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N)
-  avocado.groves[N,13]<<-cash
+  avocado.groves[N,10]<<-is.there.disease.here(N,t) #is.there.disease.here function lines 174-186
+  avocado.groves[N,11]<<-how.much.disease.is.there.within.grove(N) #how.much.disease.is.there.within.grove function lines 90-125
+  avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N) #how.many.heatlhy.trees.are.there function lines 128-137
+  avocado.groves[N,13]<<-cash #from above line 191
   
   if(avocado.groves[N-size,12]<=0 | avocado.groves[N-size,5]<=0){
     avocado.groves[N,3]<<-"dead"
@@ -217,9 +217,9 @@ data.fill.monthly<-function(N,t){
 #a function for filling in data for the turn of the new year: 
 data.fill.time12<-function(N,t){
   
-  perc.not<-cumperbenefit("low",N-size*t,t-1)
-  perc.stu<-cumperbenefit("medium",N-size*t,t-1)
-  perc.fun<-cumperbenefit("high",N-size*t,t-1)
+  perc.not<-cumperbenefit("low",N-size*t,t-1) #cumperbenefit function lines 72-83
+  perc.stu<-cumperbenefit("medium",N-size*t,t-1) #cumperbenefit function lines 72-83
+  perc.fun<-cumperbenefit("high",N-size*t,t-1) #cumperbenefit function lines 72-83
   
   if(perc.not>perc.fun && perc.not>perc.stu){
     man<-"low"
@@ -231,20 +231,20 @@ data.fill.time12<-function(N,t){
     man<-"high"
   }
   
-  cash<-how.much.did.this.cost.newyear(N)
+  cash<-how.much.did.this.cost.newyear(N) #how.muc.did.this.cost.new.year function lines 157-171
   
   avocado.groves[N,1]<<-t
   avocado.groves[N,2]<<-avocado.groves[N-size*t,2]
   avocado.groves[N,3]<<-man
   avocado.groves[N,4]<<-avocado.groves[N-size*t,4]
-  avocado.groves[N,5]<<-avocado.groves[N-size,12]*51.22-cash
+  avocado.groves[N,5]<<-avocado.groves[N-size,12]*51.22-cash #cash from above line 234
   avocado.groves[N,6]<<-avocado.groves[N-size*t,6]
   avocado.groves[N,7]<<-perc.not
   avocado.groves[N,8]<<-perc.stu
   avocado.groves[N,9]<<-perc.fun
-  avocado.groves[N,10]<<-is.there.disease.here(N,t)
+  avocado.groves[N,10]<<-is.there.disease.here(N,t) #is.there.disease.here function lines 174-186
   avocado.groves[N,11]<<-0
-  avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N)
+  avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N) #how.many.heatlhy.trees.are.there function lines 128-137
   avocado.groves[N,13]<<-0
   
   if(avocado.groves[N-size,12]<=0 | avocado.groves[N-size,5]<=0){
@@ -286,17 +286,17 @@ stick<-function(N){
 
 carrot<-function(N){
   if(avocado.groves[N-size,3]=="low"){
-    money<-how.much.did.this.cost.monthly(N)
+    money<-how.much.did.this.cost.monthly(N) #how.much.did.this.cost.monthly function lines 140-154
     return(money)
   }
   else{
     if(money.pot<=0){
-      money<-how.much.did.this.cost.monthly(N)
+      money<-how.much.did.this.cost.monthly(N) #how.much.did.this.cost.monthly function lines 140-154
       return(money)
     }
     else{
-      money.pot<<-money.pot-how.much.did.this.cost.monthly(N)*0.5
-      costs.covered<-how.much.did.this.cost.monthly(N)*0.5
+      money.pot<<-money.pot-how.much.did.this.cost.monthly(N)*0.5 #how.much.did.this.cost.monthly function lines 140-154
+      costs.covered<-how.much.did.this.cost.monthly(N)*0.5 #how.much.did.this.cost.monthly function lines 140-154
       return(costs.covered)
     }
   }
@@ -312,12 +312,12 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
   while(timestep<=t){
     if(timestep%%12!=0){
       for(N in 1:size.of.mat){
-        data.fill.monthly(N+size.of.mat*timestep,timestep)
+        data.fill.monthly(N+size.of.mat*timestep,timestep) #data.fill.monthly function lines 189-215 
       }
     }
     if(timestep%%12==0){
       for(N in 1:size.of.mat){
-        data.fill.time12(N+size.of.mat*timestep,timestep)
+        data.fill.time12(N+size.of.mat*timestep,timestep) #data.fill.time12 function lines 218-258
       }
     }
     timestep=timestep+1
