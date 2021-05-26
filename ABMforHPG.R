@@ -673,11 +673,11 @@ for(i in 1:10){
 
 #saving data into the output matrix	
 	
-ULTIMATE.MAT[W,1]<-jazz
-ULTIMATE.MAT[W,2:4]<-carl[1,1:3]
-ULTIMATE.MAT[W,5:7]<-carl[10,1:3]
-ULTIMATE.MAT[W,8:17]<-ab.stb[2,1:10]
-ULTIMATE.MAT[W,18]<-sum(money95.1[1:n1])/n1
+ULTIMATE.MAT[W,1]<-jazz # % final trees remaining / initial trees 
+ULTIMATE.MAT[W,2:4]<-carl[1,1:3] # number of low,med,high strats at the beginning
+ULTIMATE.MAT[W,5:7]<-carl[10,1:3] # number of low,med,high strats at the end
+ULTIMATE.MAT[W,8:17]<-ab.stb[2,1:10] # number of average changes made per stubbornness  
+ULTIMATE.MAT[W,18]<-sum(money95.1[1:n1])/n1 #
 ULTIMATE.MAT[W,19]<-sum(money95.1[1:n2])/n2
 ULTIMATE.MAT[W,20]<-sum(money95.120[1:n3])/n3
 ULTIMATE.MAT[W,21]<-sum(money95.120[1:n4])/n4
