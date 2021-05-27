@@ -328,14 +328,14 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
 
 #initializing a for loop to repeat the simulation 400 times	
 
-ULTIMATE.MAT<-matrix(0,nrow=400,ncol=33)
+ULTIMATE.MAT<-matrix(0,nrow=100,ncol=33)
 colnames(ULTIMATE.MAT)<-c("Percent Grove Remaining","# Inital Low","# Inital Med", "# Inital High", "# Final Low","# Final Med","# Final High", 
                           "0.1 A","0.2 A","0.3 A","0.4 A","0.5 A","0.6 A","0.7 A","0.8 A","0.9 A","1.0 A","95th Finances Inital",
                           "5th Finances  Inital","95th Finances Final","5th Finances Final",
                           "95th Disease","5th Disease", "0.1 S","0.2 S","0.3 S","0.4 S","0.5 S",
                           "0.6 S","0.7 S","0.8 S","0.9 S","1.0 S") #data being save from each simulation
 
-for(W in 1:400){
+for(W in 1:100){
 
 ###################################################################################################################
 
