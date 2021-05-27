@@ -1,6 +1,6 @@
 #!/bin/sh
-#SBATCH --account=plantpath                 # what account you are with
-#SBATCH --qos=plantpath                     # use which account 
+#SBATCH --account=epi                 # what account you are with
+#SBATCH --qos=epi                     # use which account 
 #SBATCH --job-name=SS.Run1            # Job name
 #SBATCH --mail-type=ALL               # Mail events (NONE, BEGIN, END, FAIL, ALL)
 #SBATCH --mail-user=betherton@ufl.edu           # Where to send mail	
