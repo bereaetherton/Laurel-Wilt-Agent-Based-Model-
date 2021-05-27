@@ -320,12 +320,14 @@ carrot<-function(N){
 }
 
 ####################################################################################################################
-
+####################################################################################################################
+####################################################################################################################
 #Putting everything together
 
 #function 
 # for wrapping everything together (entire modeling)
 the.entire.process<-function(size.of.mat,t,W){   #read in the size of the matrix and the number of MONTHS you'd like
+  size.of.mat
   timestep<-1
   while(timestep<=t){
     if(timestep%%12!=0){
@@ -345,44 +347,41 @@ the.entire.process<-function(size.of.mat,t,W){   #read in the size of the matrix
   
   #sum(avocado.groves[0:size,12])
   final.trees<-0
-  for(i in 1:size){
-    if(avocado.groves[size*120+i,12]==-1){
+  for(i in 1:size.of.mat){
+    if(avocado.groves[size.of.mat*120+i,12]==-1){
       final.trees=final.trees+0
     }
     else{
-      final.trees=final.trees+avocado.groves[[size*120+i,12]]
+      final.trees=final.trees+avocado.groves[[size.of.mat*120+i,12]]
     }
   }
+jazz<-(final.trees/sum(avocado.groves[0:size.of.mat,12]))*100
   
-  jazz<-(final.trees/sum(avocado.groves[0:size,12]))*100
-  #jazz
-  
-  #calculate the total of each strat at the beginning and end of the simulation
-  
-  carl<-matrix(0,nrow=10,ncol=4)
-  colnames(carl)<-c("low","medium","high","dead")
+#calculate the total of each strat at the beginning and end of the simulation
+carl<-matrix(0,nrow=10,ncol=4)
+colnames(carl)<-c("low","medium","high","dead")
   for(i in 1:10){
-    carl[i,1]<-length(which(avocado.groves[(size*(i-1)*12+1):(size*(i-1)*12+size),3]=="low"))
-    carl[i,2]<-length(which(avocado.groves[(size*(i-1)*12+1):(size*(i-1)*12+size),3]=="medium"))
-    carl[i,3]<-length(which(avocado.groves[(size*(i-1)*12+1):(size*(i-1)*12+size),3]=="high"))
-    carl[i,4]<-length(which(avocado.groves[(size*(i-1)*12+1):(size*(i-1)*12+size),3]=="dead"))
+    carl[i,1]<-length(which(avocado.groves[(size.of.mat*(i-1)*12+1):(size.of.mat*(i-1)*12+size.of.mat),3]=="low"))
+    carl[i,2]<-length(which(avocado.groves[(size.of.mat*(i-1)*12+1):(size.of.mat*(i-1)*12+size.of.mat),3]=="medium"))
+    carl[i,3]<-length(which(avocado.groves[(size.of.mat*(i-1)*12+1):(size.of.mat*(i-1)*12+size.of.mat),3]=="high"))
+    carl[i,4]<-length(which(avocado.groves[(size.of.mat*(i-1)*12+1):(size.of.mat*(i-1)*12+size.of.mat),3]=="dead"))
   }
-  #View(carl)
+#View(carl)
   
-  #calculate average change across stubbornness
+#calculate average change across stubbornness
   
-  toby.mat<-matrix(0,nrow=2,ncol=size)
-  for(i in 1:size){
-    toby<-filter(avocado.groves,avocado.groves$node==i)
-    toby.count<-0
-    for(j in 1:119){
-      if(toby[j,3]!=toby[j+1,3] && toby[j+1,3]!="dead"){
+toby.mat<-matrix(0,nrow=2,ncol=size.of.mat)
+for(i in 1:size.of.mat){
+  toby<-filter(avocado.groves,avocado.groves$node==i)
+  toby.count<-0
+  for(j in 1:119){
+    if(toby[j,3]!=toby[j+1,3] && toby[j+1,3]!="dead"){
         toby.count=toby.count+1
       }
     }
     toby.mat[1,i]<-avocado.groves[[i,6]]
     toby.mat[2,i]<-toby.count 
-  }#a place holder mat with stubbornness and # of changes
+} #a place holder mat with stubbornness and # of changes
   
   ab.stb<-matrix(0,nrow=2,ncol=10)
   for(i in stubborness.lower.bound:stubborness.upper.bound){
@@ -393,13 +392,13 @@ the.entire.process<-function(size.of.mat,t,W){   #read in the size of the matrix
   
   #calculate 95th and 5th percentile of finances
   
-  money95.1<-order(avocado.groves[1:size,5],decreasing=FALSE)
+  money95.1<-order(avocado.groves[1:size.of.mat,5],decreasing=FALSE)
   money95.1<-as.matrix(avocado.groves[money95.1,5])
   n1<-round(0.95*length(money95.1))
   #sum(money95.1[1:n1])/n1
   n2<-round(0.05*length(money95.1))
   #sum(money95.1[1:n2])/n2
-  money95.120<-order(avocado.groves[(size*10*12+1):(size*10*12+size),5],decreasing=FALSE)
+  money95.120<-order(avocado.groves[(size.of.mat*10*12+1):(size.of.mat*10*12+size.of.mat),5],decreasing=FALSE)
   money95.120<-as.matrix(avocado.groves[money95.120,5])
   n3<-round(0.95*length(money95.120))
   #sum(money95.120[1:n3])/n3
@@ -408,9 +407,9 @@ the.entire.process<-function(size.of.mat,t,W){   #read in the size of the matrix
   
   #calculate 95th and 5th percentile of grove infections
   
-  prop95.1<-avocado.groves[(size*10*12+1):(size*10*12+size),12]/avocado.groves[1:size,12]
+  prop95.1<-avocado.groves[(size.of.mat*10*12+1):(size.of.mat*10*12+size.of.mat),12]/avocado.groves[1:size.of.mat,12]
   prop95.1<-as.matrix(prop95.1)
-  for(i in 1:size){
+  for(i in 1:size.of.mat){
     if(prop95.1[i]<0){
       prop95.1[i]<-0
     }
@@ -425,12 +424,11 @@ the.entire.process<-function(size.of.mat,t,W){   #read in the size of the matrix
   
   #calculate percent infected at end by stubborneess
   
-  
   bob.mat<-matrix(0,nrow=2,ncol=10)
   for(i in 1:10){
     
-    bob<-filter(avocado.groves[1:size,],avocado.groves[1:size,6]==(i/10))
-    obo<-filter(avocado.groves[(size*10*12+1):(size*10*12+size),],avocado.groves[(size*10*12+1):(size*10*12+size),6]==(i/10))
+    bob<-filter(avocado.groves[1:size.of.mat,],avocado.groves[1:size.of.mat,6]==(i/10))
+    obo<-filter(avocado.groves[(size.of.mat*10*12+1):(size.of.mat*10*12+size.of.mat),],avocado.groves[(size.of.mat*10*12+1):(size.of.mat*10*12+size.of.mat),6]==(i/10))
     
     if(dim(bob)[1]==0){
       bob.mat[1,i]<-(i/10)
@@ -448,7 +446,7 @@ the.entire.process<-function(size.of.mat,t,W){   #read in the size of the matrix
     }
   }
 # SAVE LIST
-ULTI.LIST=ULTIMATE.LIST <- list()
+ULTI.LIST <- list()
 (W=W)
 ULTI.LIST[[W]] <- list(
     trees = jazz, # % final trees remaining / initial trees 
@@ -596,7 +594,7 @@ avocado.groves<-mutate(avocado.groves,yearly.costs=0)
 colnames(avocado.groves)<-c("timestep","node","treatment","acres","capital","stubbornness",
                             "perc.Low","perc.Medium","perc.High","disease.presence","diseased.trees",
                             "healthy.trees","monthly.costs")
-#View(avocado.groves)
+(avocado.groves)
 
 #########################################################################################################
 
@@ -663,7 +661,7 @@ for(i in 1:size){
 
 comm.net<-as.data.frame(comm.net)
 colnames(comm.net)<-1:size
-#View(comm.net)
+comm.net[1:5,1:5]
 
 #########################################################################################################
 
