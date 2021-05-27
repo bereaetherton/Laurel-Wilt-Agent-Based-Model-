@@ -697,9 +697,9 @@ bp.net<-function(node1,node2){
 #########################################################################################################
 library(doParallel)
 
-registerDoParallel(cores=8)  
+registerDoParallel(cores=12)  
 
-ULT.MAT <- foreach(W=seq_along(1:10)) %dopar% 
+ULT.MAT <- foreach(W=seq_along(1:100)) %dopar% 
   the.entire.process(size, 120, W) #this will simulate disease spread and 
                                    #growers decisions over 10 years (120 months)
 str(ULT.MAT)
