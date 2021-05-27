@@ -510,10 +510,10 @@ stick.perc.increase<-10  #for sticks, what percent of annual income is removed f
 ##################################################################################################################
 #Parameters
 # 
-# args <- commandArgs(TRUE)
-# ARG <- as.numeric(strsplit(args[1], ",")[[1]])
+args <- commandArgs(TRUE)
+ARG <- as.numeric(strsplit(args[1], ",")[[1]])
 
-ARG = c(2.0, 1.5, 1, 10, 150000, 10)
+#ARG = c(2.0, 1.5, 1, 10, 150000, 10)
 
 print(ARG)
 
