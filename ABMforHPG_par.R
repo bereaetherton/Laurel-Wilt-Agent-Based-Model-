@@ -325,7 +325,7 @@ carrot<-function(N){
 
 #function 
 # for wrapping everything together (entire modeling)
-the.entire.process<-function(size.of.mat,t,W){   #read in the size of the matrix and the number of MONTHS you'd like
+the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix and the number of MONTHS you'd like
   size.of.mat
   timestep<-1
   while(timestep<=t){
@@ -510,10 +510,10 @@ stick.perc.increase<-10  #for sticks, what percent of annual income is removed f
 ##################################################################################################################
 #Parameters
 # 
-args <- commandArgs(TRUE)
-ARG <- as.numeric(strsplit(args[1], ",")[[1]])
+# args <- commandArgs(TRUE)
+# ARG <- as.numeric(strsplit(args[1], ",")[[1]])
 
-#ARG = c(2.0, 1.5, 1, 10, 150000, 10)
+ARG = c(2.0, 1.5, 1, 10, 150000, 10)
 
 print(ARG)
 
@@ -700,7 +700,7 @@ library(doParallel)
 registerDoParallel(cores=12)  
 
 ULT.MAT <- foreach(W=seq_along(1:100)) %dopar% 
-  the.entire.process(size, 120, W) #this will simulate disease spread and 
+  the.entire.process(size, 120) #this will simulate disease spread and 
                                    #growers decisions over 10 years (120 months)
 str(ULT.MAT)
 
