@@ -478,11 +478,11 @@ colnames(ULTIMATE.MAT)<-c("Percent Grove Remaining","# Inital Low","# Inital Med
 
 #Files and unchanged paramters
 
-#av.centers<- read_xlsx("/blue/garrett/betherton/LW2020/av.centers.xlsx")
-av.centers<- read_xlsx("av.centers.xlsx")
+av.centers<- read_xlsx("/blue/garrett/betherton/LW2020/av.centers.xlsx")
+#av.centers<- read_xlsx("av.centers.xlsx")
 av.centers<-av.centers[1:50,] #for just 50 groves 
-#distance<-read_xlsx("/blue/garrett/betherton/LW2020/Distance.xlsx")
-distance<-read_xlsx("Distance.xlsx")
+distance<-read_xlsx("/blue/garrett/betherton/LW2020/Distance.xlsx")
+#distance<-read_xlsx("Distance.xlsx")
 distance<-as.data.frame(distance)
 distance<-distance[1:50,1:50] #for just 50 groves
 
