@@ -319,8 +319,7 @@ carrot<-function(N){
 }
 
 ####################################################################################################################
-####################################################################################################################
-####################################################################################################################
+
 #Putting everything together
 
 #function 
@@ -467,12 +466,12 @@ ULTI.LIST <- list(
 
 #initializing a for loop to repeat the simulation 400 times	
 
-ULTIMATE.MAT<-matrix(0,nrow=10,ncol=33)
-colnames(ULTIMATE.MAT)<-c("Percent Grove Remaining","# Inital Low","# Inital Med", "# Inital High", "# Final Low","# Final Med","# Final High", 
-                          "0.1 A","0.2 A","0.3 A","0.4 A","0.5 A","0.6 A","0.7 A","0.8 A","0.9 A","1.0 A","95th Finances Inital",
-                          "5th Finances  Inital","95th Finances Final","5th Finances Final",
-                          "95th Disease","5th Disease", "0.1 S","0.2 S","0.3 S","0.4 S","0.5 S",
-                          "0.6 S","0.7 S","0.8 S","0.9 S","1.0 S") #data being save from each simulation
+#ULTIMATE.MAT<-matrix(0,nrow=10,ncol=33)
+#colnames(ULTIMATE.MAT)<-c("Percent Grove Remaining","# Inital Low","# Inital Med", "# Inital High", "# Final Low","# Final Med","# Final High", 
+#                          "0.1 A","0.2 A","0.3 A","0.4 A","0.5 A","0.6 A","0.7 A","0.8 A","0.9 A","1.0 A","95th Finances Inital",
+#                          "5th Finances  Inital","95th Finances Final","5th Finances Final",
+#                          "95th Disease","5th Disease", "0.1 S","0.2 S","0.3 S","0.4 S","0.5 S",
+#                          "0.6 S","0.7 S","0.8 S","0.9 S","1.0 S") #data being save from each simulation
 
 ###################################################################################################################
 
@@ -480,11 +479,11 @@ colnames(ULTIMATE.MAT)<-c("Percent Grove Remaining","# Inital Low","# Inital Med
 
 av.centers<- read_xlsx("/blue/garrett/betherton/LW2020/av.centers.xlsx")
 #av.centers<- read_xlsx("av.centers.xlsx")
-#av.centers<-av.centers[1:50,] #for just 50 groves 
+av.centers<-av.centers[1:50,] #for just 50 groves 
 distance<-read_xlsx("/blue/garrett/betherton/LW2020/Distance.xlsx")
 #distance<-read_xlsx("Distance.xlsx")
 distance<-as.data.frame(distance)
-#distance<-distance[1:50,1:50] #for just 50 groves
+distance<-distance[1:50,1:50] #for just 50 groves
 
 
 size<-dim(av.centers)[1] #size of matrix
@@ -589,11 +588,17 @@ for(i in 1:size){
 #the row for tracking compounding costs
 avocado.groves<-mutate(avocado.groves,yearly.costs=0) 
 
+#assinging random management 
+
+for (i in 1:size){
+  avocado.groves[[i,3]]<-sample(c("low","medium","high"),1,replace=TRUE,prob=c(0.33,0.33,0.33))
+}
+
 #renaming column names:
 colnames(avocado.groves)<-c("timestep","node","treatment","acres","capital","stubbornness",
                             "perc.Low","perc.Medium","perc.High","disease.presence","diseased.trees",
                             "healthy.trees","monthly.costs")
-(avocado.groves)
+#(avocado.groves)
 
 #########################################################################################################
 

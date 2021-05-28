@@ -1,0 +1,542 @@
+/home/betherton/gitlocalhpg/Laurel-Wilt-Agent-Based-Model-
+c0710a-s23.ufhpc
+Fri May 28 16:41:44 EDT 2021
+3.0,1.5,1,10,150000,10
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+[1] 3.0e+00 1.5e+00 1.0e+00 1.0e+01 1.5e+05 1.0e+01
+[1] 3
+[1] 1.5
+[1] 1
+[1] 10
+[1] 150000
+[1] 10
+$trees
+[1] 81.3233
+
+$strats.b
+   low medium   high 
+     9      9      7 
+
+$strats.e
+   low medium   high 
+     7      2     11 
+
+$x.stub
+ [1] 5.000000 1.666667 1.000000 6.333333 4.750000 1.600000 0.000000 1.750000
+ [9] 0.000000 1.000000
+
+$money951.1
+[1] 29510.33
+
+$money952.1
+[1] 4734.064
+
+$money951.120
+[1] 29510.33
+
+$money952.120
+[1] 26562.63
+
+$prop95.1
+[1] 0.7916667
+
+$prop95.2
+[1] 0
+
+$bob
+ [1] 1.0000000 1.0000000 1.0000000 0.7462731 1.0000000 0.4172222 1.0000000
+ [8] 0.3872695 1.0000000 1.0000000
+
+$trees
+[1] 96.74273
+
+$strats.b
+   low medium   high 
+     7      7     11 
+
+$strats.e
+   low medium   high 
+     4      6     14 
+
+$x.stub
+ [1] 6.6666667 0.0000000 2.0000000 1.0000000 6.2500000 0.3333333 0.0000000
+ [8] 0.7500000 1.7500000 0.0000000
+
+$money951.1
+[1] 29238.39
+
+$money952.1
+[1] 4690.44
+
+$money951.120
+[1] 29238.39
+
+$money952.120
+[1] 26335.72
+
+$prop95.1
+[1] 0.9583333
+
+$prop95.2
+[1] 0
+
+$bob
+ [1] 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000
+ [8] 0.7426989 1.0000000 1.0000000
+
+$trees
+[1] 88.8641
+
+$strats.b
+   low medium   high 
+     6     14      5 
+
+$strats.e
+   low medium   high 
+     2     11      9 
+
+$x.stub
+ [1] 0.3333333       NaN 0.0000000 0.5000000 0.0000000 1.0000000 0.5000000
+ [8] 1.0000000 0.6666667 0.5000000
+
+$money951.1
+[1] 20224.97
+
+$money952.1
+[1] 3244.501
+
+$money951.120
+[1] 20224.97
+
+$money952.120
+[1] 17346.74
+
+$prop95.1
+[1] 0.875
+
+$prop95.2
+[1] 0
+
+$bob
+ [1] 1.0000000 0.0000000 1.0000000 0.1710526 1.0000000 1.0000000 1.0000000
+ [8] 1.0000000 0.7808281 1.0000000
+
+$trees
+[1] 100
+
+$strats.b
+   low medium   high 
+    12      7      6 
+
+$strats.e
+   low medium   high 
+     5      7     13 
+
+$x.stub
+ [1] 0.0000000 0.4000000 0.7500000 4.5000000 0.6666667 3.0000000 0.5000000
+ [8] 1.0000000 1.0000000 0.5000000
+
+$money951.1
+[1] 23566.25
+
+$money952.1
+[1] 3780.512
+
+$money951.120
+[1] 23566.25
+
+$money952.120
+[1] 3780.512
+
+$prop95.1
+[1] 1
+
+$prop95.2
+[1] 1
+
+$bob
+ [1] 1 1 1 1 1 1 1 1 1 1
+
+$trees
+[1] 74.94901
+
+$strats.b
+   low medium   high 
+     6     12      7 
+
+$strats.e
+   low medium   high 
+     4      6     12 
+
+$x.stub
+ [1] NaN 0.5 NaN 0.5 1.0 0.8 0.4 0.0 0.5 0.5
+
+$money951.1
+[1] 31046.03
+
+$money952.1
+[1] 4980.422
+
+$money951.120
+[1] 32378.31
+
+$money952.120
+[1] 6276.456
+
+$prop95.1
+[1] 0.7803961
+
+$prop95.2
+[1] 0
+
+$bob
+ [1] 0.0000000 0.7962003 0.0000000 0.8123841 0.3464674 0.5845906 0.8821665
+ [8] 1.0000000 1.0000000 0.8154093
+
+$trees
+[1] 100
+
+$strats.b
+   low medium   high 
+    11      5      9 
+
+$strats.e
+   low medium   high 
+     5      5     15 
+
+$x.stub
+ [1] 1.0000000 1.0000000 6.3333333 0.8000000 0.6666667 0.0000000 1.0000000
+ [8] 0.0000000       NaN 1.0000000
+
+$money951.1
+[1] 33482.82
+
+$money952.1
+[1] 5371.333
+
+$money951.120
+[1] 33482.82
+
+$money952.120
+[1] 5371.333
+
+$prop95.1
+[1] 1
+
+$prop95.2
+[1] 1
+
+$bob
+ [1] 1 1 1 1 1 1 1 1 0 1
+
+$trees
+[1] 91.0951
+
+$strats.b
+   low medium   high 
+     8      5     12 
+
+$strats.e
+   low medium   high 
+     4      3     17 
+
+$x.stub
+ [1] 2.5000000 0.3333333 0.5000000 1.0000000 1.2000000 1.0000000       NaN
+ [8] 1.5000000 2.0000000 0.0000000
+
+$money951.1
+[1] 30539.85
+
+$money952.1
+[1] 4899.22
+
+$money951.120
+[1] 30539.85
+
+$money952.120
+[1] 66865.52
+
+$prop95.1
+[1] 0.9539977
+
+$prop95.2
+[1] 0
+
+$bob
+ [1] 1.000000 1.000000 0.944941 0.362237 1.000000 1.000000 0.000000 1.000000
+ [9] 1.000000 1.000000
+
+$trees
+[1] 96.7746
+
+$strats.b
+   low medium   high 
+     9     11      5 
+
+$strats.e
+   low medium   high 
+     8      9      7 
+
+$x.stub
+ [1] 4.500000 3.000000 6.000000 3.800000 6.800000 6.333333 0.000000 0.000000
+ [9] 1.000000      NaN
+
+$money951.1
+[1] 27840
+
+$money952.1
+[1] 4466.11
+
+$money951.120
+[1] 27840
+
+$money952.120
+[1] 24810.95
+
+$prop95.1
+[1] 0.9583333
+
+$prop95.2
+[1] 0
+
+$bob
+ [1] 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000 1.0000000
+ [8] 0.1851852 1.0000000 0.0000000
+
+$trees
+[1] 79.55762
+
+$strats.b
+   low medium   high 
+     5     13      7 
+
+$strats.e
+   low medium   high 
+     1      6     15 
+
+$x.stub
+ [1] 0.6666667 3.6666667       NaN       NaN 1.0000000 1.3333333 2.0000000
+ [8] 1.0000000 1.2500000       NaN
+
+$money951.1
+[1] 13163.32
+
+$money952.1
+[1] 2111.668
+
+$money951.120
+[1] 13728.2
+
+$money952.120
+[1] 11731.12
+
+$prop95.1
+[1] 0.8333333
+
+$prop95.2
+[1] 0
+
+$bob
+ [1] 0.8442703 1.0000000 0.0000000 0.0000000 1.0000000 1.0000000 0.5549593
+ [8] 1.0000000 1.0000000 0.0000000
+
+$trees
+[1] 100
+
+$strats.b
+   low medium   high 
+     9      8      8 
+
+$strats.e
+   low medium   high 
+     5      9     11 
+
+$x.stub
+ [1] 0.500000 2.000000 1.000000 0.500000 4.666667 2.142857 1.000000 1.000000
+ [9] 1.000000 0.500000
+
+$money951.1
+[1] 34318.94
+
+$money952.1
+[1] 5505.464
+
+$money951.120
+[1] 34318.94
+
+$money952.120
+[1] 5505.464
+
+$prop95.1
+[1] 1
+
+$prop95.2
+[1] 1
+
+$bob
+ [1] 1 1 1 1 1 1 1 1 1 1
+
+List of 10
+ $ :List of 11
+  ..$ trees       : num 96.7
+  ..$ strats.b    : Named num [1:3] 7 7 11
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 4 6 14
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 6.67 0 2 1 6.25 ...
+  ..$ money951.1  : num 29238
+  ..$ money952.1  : num 4690
+  ..$ money951.120: num 29238
+  ..$ money952.120: num 26336
+  ..$ prop95.1    : num 0.958
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 1 1 1 1 1 ...
+ $ :List of 11
+  ..$ trees       : num 91.1
+  ..$ strats.b    : Named num [1:3] 8 5 12
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 4 3 17
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 2.5 0.333 0.5 1 1.2 ...
+  ..$ money951.1  : num 30540
+  ..$ money952.1  : num 4899
+  ..$ money951.120: num 30540
+  ..$ money952.120: num 66866
+  ..$ prop95.1    : num 0.954
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 1 1 0.945 0.362 1 ...
+ $ :List of 11
+  ..$ trees       : num 96.8
+  ..$ strats.b    : Named num [1:3] 9 11 5
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 8 9 7
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 4.5 3 6 3.8 6.8 ...
+  ..$ money951.1  : num 27840
+  ..$ money952.1  : num 4466
+  ..$ money951.120: num 27840
+  ..$ money952.120: num 24811
+  ..$ prop95.1    : num 0.958
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 1 1 1 1 1 ...
+ $ :List of 11
+  ..$ trees       : num 100
+  ..$ strats.b    : Named num [1:3] 11 5 9
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 5 5 15
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 1 1 6.333 0.8 0.667 ...
+  ..$ money951.1  : num 33483
+  ..$ money952.1  : num 5371
+  ..$ money951.120: num 33483
+  ..$ money952.120: num 5371
+  ..$ prop95.1    : num 1
+  ..$ prop95.2    : num 1
+  ..$ bob         : num [1:10] 1 1 1 1 1 1 1 1 0 1
+ $ :List of 11
+  ..$ trees       : num 79.6
+  ..$ strats.b    : Named num [1:3] 5 13 7
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 1 6 15
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 0.667 3.667 NaN NaN 1 ...
+  ..$ money951.1  : num 13163
+  ..$ money952.1  : num 2112
+  ..$ money951.120: num 13728
+  ..$ money952.120: num 11731
+  ..$ prop95.1    : num 0.833
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0.844 1 0 0 1 ...
+ $ :List of 11
+  ..$ trees       : num 74.9
+  ..$ strats.b    : Named num [1:3] 6 12 7
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 4 6 12
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] NaN 0.5 NaN 0.5 1 0.8 0.4 0 0.5 0.5
+  ..$ money951.1  : num 31046
+  ..$ money952.1  : num 4980
+  ..$ money951.120: num 32378
+  ..$ money952.120: num 6276
+  ..$ prop95.1    : num 0.78
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0 0.796 0 0.812 0.346 ...
+ $ :List of 11
+  ..$ trees       : num 100
+  ..$ strats.b    : Named num [1:3] 9 8 8
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 5 9 11
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 0.5 2 1 0.5 4.67 ...
+  ..$ money951.1  : num 34319
+  ..$ money952.1  : num 5505
+  ..$ money951.120: num 34319
+  ..$ money952.120: num 5505
+  ..$ prop95.1    : num 1
+  ..$ prop95.2    : num 1
+  ..$ bob         : num [1:10] 1 1 1 1 1 1 1 1 1 1
+ $ :List of 11
+  ..$ trees       : num 88.9
+  ..$ strats.b    : Named num [1:3] 6 14 5
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 2 11 9
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 0.333 NaN 0 0.5 0 ...
+  ..$ money951.1  : num 20225
+  ..$ money952.1  : num 3245
+  ..$ money951.120: num 20225
+  ..$ money952.120: num 17347
+  ..$ prop95.1    : num 0.875
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 1 0 1 0.171 1 ...
+ $ :List of 11
+  ..$ trees       : num 100
+  ..$ strats.b    : Named num [1:3] 12 7 6
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 5 7 13
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 0 0.4 0.75 4.5 0.667 ...
+  ..$ money951.1  : num 23566
+  ..$ money952.1  : num 3781
+  ..$ money951.120: num 23566
+  ..$ money952.120: num 3781
+  ..$ prop95.1    : num 1
+  ..$ prop95.2    : num 1
+  ..$ bob         : num [1:10] 1 1 1 1 1 1 1 1 1 1
+ $ :List of 11
+  ..$ trees       : num 81.3
+  ..$ strats.b    : Named num [1:3] 9 9 7
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 7 2 11
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 5 1.67 1 6.33 4.75 ...
+  ..$ money951.1  : num 29510
+  ..$ money952.1  : num 4734
+  ..$ money951.120: num 29510
+  ..$ money952.120: num 26563
+  ..$ prop95.1    : num 0.792
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 1 1 1 0.746 1 ...
+Error in gzfile(file, "wb") : cannot open the connection
+Calls: save.image -> save -> gzfile
+In addition: Warning message:
+In gzfile(file, "wb") :
+  cannot open compressed file '../lw2021/_ABMModel_3-1.5-1-10-150000-10.RDataTmp', probable reason 'No such file or directory'
+Execution halted
+Warning message:
+In file.remove(outfile) :
+  cannot remove file '../lw2021/_ABMModel_3-1.5-1-10-150000-10.RDataTmp', reason 'No such file or directory'
+Fri May 28 16:42:07 EDT 2021

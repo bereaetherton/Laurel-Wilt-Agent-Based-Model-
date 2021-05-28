@@ -1,0 +1,18 @@
+/home/betherton/gitlocalhpg/Laurel-Wilt-Agent-Based-Model-
+c0712a-s5.ufhpc
+Fri May 28 15:40:02 EDT 2021
+2,1.5,1,10,150000,0
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Error: object 'size.of.mat' not found
+Execution halted
+Fri May 28 15:40:06 EDT 2021

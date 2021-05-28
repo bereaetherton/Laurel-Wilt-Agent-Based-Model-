@@ -1,0 +1,48 @@
+/home/betherton/gitlocalhpg/Laurel-Wilt-Agent-Based-Model-
+c0712a-s16.ufhpc
+Fri May 28 14:21:54 EDT 2021
+2,1.5,1,10,50000,10
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+[1]     2.0     1.5     1.0    10.0 50000.0    10.0
+[1] 2
+[1] 1.5
+[1] 1
+[1] 10
+[1] 50000
+[1] 10
+# A tibble: 1,132 x 13
+   timestep  node treatment acres capital stubbornness perc.Low perc.Medium
+      <dbl> <dbl> <chr>     <dbl>   <dbl>        <dbl>    <dbl>       <dbl>
+ 1        0     1 low        2.25   9973.          1      9973.       9262.
+ 2        0     2 low        1.15   5090.          0.4    5090.       4992.
+ 3        0     3 high       2.55  11330.          0.1   10740.      11090.
+ 4        0     4 medium     4.87  21594.          0.8   18269.      21594.
+ 5        0     5 high       1.45   6443.          0.2    6324.       5942.
+ 6        0     6 high       4.86  21573.          0.2   20795.      20445.
+ 7        0     7 medium     5.11  22663.          0.7   20578.      22663.
+ 8        0     8 high      12.4   55125.          0.6   52204.      50402.
+ 9        0     9 high       9.35  41473.          1     34694.      38369.
+10        0    10 medium     5.06  22438.          0.9   22322.      22438.
+# … with 1,122 more rows, and 5 more variables: perc.High <dbl>,
+#   disease.presence <dbl>, diseased.trees <dbl>, healthy.trees <dbl>,
+#   monthly.costs <dbl>
+  1 2 3 4 5
+1 0 0 0 0 0
+2 0 0 0 0 0
+3 0 0 0 0 0
+4 0 0 0 0 0
+5 0 0 0 0 0
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+slurmstepd: error: *** JOB 2271379 ON c0712a-s16 CANCELLED AT 2021-05-28T14:34:32 ***
