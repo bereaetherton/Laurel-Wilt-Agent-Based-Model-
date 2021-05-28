@@ -304,3 +304,169 @@ $bob
  [1] 0.12824542 0.08264115 0.09854267 0.15093932 0.21414032 0.12962468
  [7] 0.36071569 0.24678716 0.32155447 0.34152606
 
+$trees
+[1] 19.6848
+
+$strats.b
+   low medium   high 
+   289    288    555 
+
+$strats.e
+   low medium   high 
+    22     67    195 
+
+$x.stub
+ [1] 1.3047619 1.2477064 1.0833333 1.0350877 1.0075758 0.9120000 0.8691589
+ [8] 0.5841584 0.2807018 0.0000000
+
+$money951.1
+[1] 22738.15
+
+$money952.1
+[1] 3017.805
+
+$money951.120
+[1] 27215.51
+
+$money952.120
+[1] 27096.05
+
+$prop95.1
+[1] 0.1261297
+
+$prop95.2
+[1] 0
+
+$bob
+ [1] 0.11048878 0.08578816 0.06446815 0.07852013 0.21233710 0.11488448
+ [7] 0.37052470 0.22837568 0.31577838 0.35141578
+
+Warning message:
+In mclapply(argsList, FUN, mc.preschedule = preschedule, mc.set.seed = set.seed,  :
+  scheduled cores 2, 10 did not deliver results, all values of the jobs will be affected
+List of 10
+ $ :List of 11
+  ..$ trees       : num 20.5
+  ..$ strats.b    : Named num [1:3] 289 288 555
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 20 79 195
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 1.42 1.25 1.11 1.08 1.02 ...
+  ..$ money951.1  : num 22738
+  ..$ money952.1  : num 3018
+  ..$ money951.120: num 26721
+  ..$ money952.120: num 35324
+  ..$ prop95.1    : num 0.122
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0.1212 0.0749 0.0844 0.162 0.2092 ...
+ $ : NULL
+ $ :List of 11
+  ..$ trees       : num 19.6
+  ..$ strats.b    : Named num [1:3] 289 288 555
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 20 59 217
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 1.495 1.294 1.056 1.07 0.917 ...
+  ..$ money951.1  : num 22738
+  ..$ money952.1  : num 3018
+  ..$ money951.120: num 26700
+  ..$ money952.120: num 21222
+  ..$ prop95.1    : num 0.137
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0.1057 0.0854 0.1195 0.0994 0.1695 ...
+ $ :List of 11
+  ..$ trees       : num 24
+  ..$ strats.b    : Named num [1:3] 289 288 555
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 14 111 203
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 1.314 1.358 1.176 1.053 0.955 ...
+  ..$ money951.1  : num 22738
+  ..$ money952.1  : num 3018
+  ..$ money951.120: num 25670
+  ..$ money952.120: num 23017
+  ..$ prop95.1    : num 0.144
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0.123 0.078 0.127 0.223 0.235 ...
+ $ :List of 11
+  ..$ trees       : num 21.1
+  ..$ strats.b    : Named num [1:3] 289 288 555
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 17 76 209
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 1.476 1.284 1.037 1.009 0.962 ...
+  ..$ money951.1  : num 22738
+  ..$ money952.1  : num 3018
+  ..$ money951.120: num 26936
+  ..$ money952.120: num 32401
+  ..$ prop95.1    : num 0.132
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0.1282 0.0826 0.0985 0.1509 0.2141 ...
+ $ :List of 11
+  ..$ trees       : num 19.9
+  ..$ strats.b    : Named num [1:3] 289 288 555
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 18 80 202
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 1.467 1.33 1.12 1.193 0.902 ...
+  ..$ money951.1  : num 22738
+  ..$ money952.1  : num 3018
+  ..$ money951.120: num 26583
+  ..$ money952.120: num 34841
+  ..$ prop95.1    : num 0.129
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0.1123 0.0908 0.0901 0.0963 0.1599 ...
+ $ :List of 11
+  ..$ trees       : num 22.2
+  ..$ strats.b    : Named num [1:3] 289 288 555
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 18 78 209
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 1.505 1.33 1.046 1.053 0.924 ...
+  ..$ money951.1  : num 22738
+  ..$ money952.1  : num 3018
+  ..$ money951.120: num 26259
+  ..$ money952.120: num 27104
+  ..$ prop95.1    : num 0.14
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0.0962 0.0913 0.0697 0.2188 0.2297 ...
+ $ :List of 11
+  ..$ trees       : num 19.7
+  ..$ strats.b    : Named num [1:3] 289 288 555
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 22 67 195
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 1.3 1.25 1.08 1.04 1.01 ...
+  ..$ money951.1  : num 22738
+  ..$ money952.1  : num 3018
+  ..$ money951.120: num 27216
+  ..$ money952.120: num 27096
+  ..$ prop95.1    : num 0.126
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0.1105 0.0858 0.0645 0.0785 0.2123 ...
+ $ :List of 11
+  ..$ trees       : num 19.3
+  ..$ strats.b    : Named num [1:3] 289 288 555
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ strats.e    : Named num [1:3] 18 68 191
+  .. ..- attr(*, "names")= chr [1:3] "low" "medium" "high"
+  ..$ x.stub      : num [1:10] 1.448 1.257 1.046 1.053 0.947 ...
+  ..$ money951.1  : num 22738
+  ..$ money952.1  : num 3018
+  ..$ money951.120: num 27075
+  ..$ money952.120: num 28490
+  ..$ prop95.1    : num 0.117
+  ..$ prop95.2    : num 0
+  ..$ bob         : num [1:10] 0.1247 0.0644 0.0929 0.1015 0.1976 ...
+ $ : NULL
+Error in gzfile(file, "wb") : cannot open the connection
+Calls: save.image -> save -> gzfile
+In addition: Warning message:
+In gzfile(file, "wb") :
+  cannot open compressed file '../lw2021/_ABMModel_2-0.5-1-10-150000-10.RDataTmp', probable reason 'No such file or directory'
+Execution halted
+Warning message:
+In file.remove(outfile) :
+  cannot remove file '../lw2021/_ABMModel_2-0.5-1-10-150000-10.RDataTmp', reason 'No such file or directory'
+Fri May 28 14:05:23 EDT 2021
+slurmstepd: error: Detected 2 oom-kill event(s) in step 2254011.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
