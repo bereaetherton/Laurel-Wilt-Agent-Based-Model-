@@ -480,11 +480,11 @@ colnames(ULTIMATE.MAT)<-c("Percent Grove Remaining","# Inital Low","# Inital Med
 
 av.centers<- read_xlsx("/blue/garrett/betherton/LW2020/av.centers.xlsx")
 #av.centers<- read_xlsx("av.centers.xlsx")
-av.centers<-av.centers[1:50,] #for just 50 groves 
+#av.centers<-av.centers[1:50,] #for just 50 groves 
 distance<-read_xlsx("/blue/garrett/betherton/LW2020/Distance.xlsx")
 #distance<-read_xlsx("Distance.xlsx")
 distance<-as.data.frame(distance)
-distance<-distance[1:50,1:50] #for just 50 groves
+#distance<-distance[1:50,1:50] #for just 50 groves
 
 
 size<-dim(av.centers)[1] #size of matrix
@@ -699,7 +699,7 @@ library(doParallel)
 
 registerDoParallel(cores=12)  
 
-ULT.MAT <- foreach(W=seq_along(1:100)) %dopar% 
+ULT.MAT <- foreach(W=seq_along(1:10)) %dopar% 
   the.entire.process(size, 120) #this will simulate disease spread and 
                                    #growers decisions over 10 years (120 months)
 str(ULT.MAT)

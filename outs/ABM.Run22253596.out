@@ -1,0 +1,52 @@
+/home/betherton/gitlocalhpg/Laurel-Wilt-Agent-Based-Model-
+c0710a-s1.ufhpc
+Fri May 28 08:48:06 EDT 2021
+2,1.5,5,10,150000,10
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+[1] 2.0e+00 1.5e+00 5.0e+00 1.0e+01 1.5e+05 1.0e+01
+[1] 2
+[1] 1.5
+[1] 5
+[1] 10
+[1] 150000
+[1] 10
+Warning message:
+Problem with `mutate()` input `stubbornness`.
+ℹ numerical expression has 5 elements: only the first used
+ℹ Input `stubbornness` is `(...)`. 
+# A tibble: 50 x 13
+   timestep  node treatment acres capital stubbornness perc.Low perc.Medium
+      <dbl> <dbl> <chr>     <dbl>   <dbl>        <dbl>    <dbl>       <dbl>
+ 1        0     1 low        2.25  13433.          0.8   13433.      11903.
+ 2        0     2 low        1.15   6856.          0.9    6856.       6351.
+ 3        0     3 high       2.55  15261.          0.8   14413.      14165.
+ 4        0     4 medium     4.87  29086.          0.7   27796.      29086.
+ 5        0     5 high       1.45   8678.          0.9    8494.       8083.
+ 6        0     6 high       4.86  29057.          0.8   26251.      25793.
+ 7        0     7 medium     5.11  30525.          0.8   28424.      30525.
+ 8        0     8 high      12.4   74248.          0.8   65026.      65821.
+ 9        0     9 high       9.35  55861.          1     50503.      50914.
+10        0    10 medium     5.06  30222.          0.8   27232.      30222.
+# … with 40 more rows, and 5 more variables: perc.High <dbl>,
+#   disease.presence <dbl>, diseased.trees <dbl>, healthy.trees <dbl>,
+#   monthly.costs <dbl>
+  1 2 3 4 5
+1 0 0 0 0 0
+2 0 0 0 0 0
+3 0 0 0 0 0
+4 0 0 0 0 0
+5 0 0 0 0 0
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+slurmstepd: error: *** JOB 2253596 ON c0710a-s1 CANCELLED AT 2021-05-28T08:57:44 ***
