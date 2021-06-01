@@ -79,8 +79,14 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
     if(avocado.groves[i,6]=="stumping"){
       avocado.groves[i,6]<-"medium"
     }
-  } 
+  }
+ 
+#assigning random management strats between simulations
   
+  for (i in 1:size){
+    avocado.groves[[i,6]]<-sample(c("low","medium","high"),1,replace=TRUE,prob=c(0.33,0.33,0.33))
+  }  
+
   #filter out lat and longitude data:
   avocado.groves <- avocado.groves %>% 
     select("timestep", "Node", "treat", "acres", "capital", "stubbornness") %>% 
@@ -117,12 +123,6 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
   
   #the row for tracking compounding costs
   avocado.groves<-mutate(avocado.groves,yearly.costs=0) 
-  
-  #assigning random management strats between simulations
-  
-  for (i in 1:size){
-    avocado.groves[[i,3]]<-sample(c("low","medium","high"),1,replace=TRUE,prob=c(0.33,0.33,0.33))
-  }
   
   #renaming column names:
   colnames(avocado.groves)<-c("timestep","node","treatment","acres","capital","stubbornness",
@@ -676,7 +676,7 @@ library(doParallel)
 
 registerDoParallel(cores=12)  
 
-ULT.MAT <- foreach(W=seq_along(1:100)) %dopar% 
+ULT.MAT <- foreach(W=seq_along(1:5)) %dopar% 
   the.entire.process(size, 120) #this will simulate disease spread and 
 #growers decisions over 10 years (120 months)
 str(ULT.MAT)
