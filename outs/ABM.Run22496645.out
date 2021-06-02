@@ -1,0 +1,30 @@
+/home/betherton/gitlocalhpg/Laurel-Wilt-Agent-Based-Model-
+c0712a-s30.ufhpc
+Wed Jun  2 11:03:07 EDT 2021
+2,1.5,1,10,150000,30
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+[1] 2.0e+00 1.5e+00 1.0e+00 1.0e+01 1.5e+05 3.0e+01
+[1] 2
+[1] 1.5
+[1] 1
+[1] 10
+[1] 150000
+[1] 30
+Error: unexpected symbol in:
+"    bob = bob.mat[2,1:10]
+    av.money"
+Execution halted
+Wed Jun  2 11:03:12 EDT 2021

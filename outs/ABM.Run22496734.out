@@ -1,0 +1,25 @@
+/home/betherton/gitlocalhpg/Laurel-Wilt-Agent-Based-Model-
+c0710a-s28.ufhpc
+Wed Jun  2 11:08:12 EDT 2021
+2,1.5,1,10,0,10
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+[1]  2.0  1.5  1.0 10.0  0.0 10.0
+[1] 2
+[1] 1.5
+[1] 1
+[1] 10
+[1] 0
+[1] 10
