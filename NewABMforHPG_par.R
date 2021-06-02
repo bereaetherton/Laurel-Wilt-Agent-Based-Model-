@@ -305,7 +305,7 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
     return(c.ben)
   } #grovebenefit function lines 55-67
   
-  #########################################################################################################
+  #---------------------------------------------------------------------------------------------#
   #These are the functions used for moving through time
   
   #function
@@ -339,7 +339,7 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
           pathogen<-0 #there is no new disease
         }
       }
-      new.disease<-avocado.groves[[N-size,11]]+pathogen #new.disease=old disease + new growth from functions above
+      new.disease<-pathogen #new.disease=old disease + new growth from functions above
       return(new.disease)
     }
     else{ #if theres no disease at previous time step
@@ -349,9 +349,9 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
   
   #function
   # how many healthy trees are there in a grove:
-  how.many.healthy.trees.are.there<-function(N){
+  how.many.healthy.trees.are.there<-function(N,sck){
     if(avocado.groves[N-size,10]==1){ #if there is disease in the grove 
-      health<-(avocado.groves[[N-size,12]]-avocado.groves[[N,11]]) #healthy trees= 100 trees per acre - diseased trees(from function above)
+      health<-(avocado.groves[[N-size,12]]-sck) #healthy trees= 100 trees per acre - diseased trees(from function above)
       return(health)
     }
     else{ #if there isn't disease
@@ -415,6 +415,9 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
   #function 
   # for filling in data by the month
   data.fill.monthly<-function(N,t){
+    
+    sick<-how.much.disease.is.there.within.grove(N)
+    
     cash<-carrot(N) #carrot function lines 287-303
     avocado.groves[N,1]<<-t
     avocado.groves[N,2]<<-avocado.groves[N-size,2]
@@ -426,8 +429,8 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
     avocado.groves[N,8]<<-avocado.groves[N-size,8]
     avocado.groves[N,9]<<-avocado.groves[N-size,9]
     avocado.groves[N,10]<<-is.there.disease.here(N,t) #is.there.disease.here function lines 174-186
-    avocado.groves[N,11]<<-how.much.disease.is.there.within.grove(N) #how.much.disease.is.there.within.grove function lines 90-125
-    avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N) #how.many.heatlhy.trees.are.there function lines 128-137
+    avocado.groves[N,11]<<-sick #how.much.disease.is.there.within.grove function lines 90-125
+    avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N,sick) #how.many.heatlhy.trees.are.there function lines 128-137
     avocado.groves[N,13]<<-cash #from above line 191
     # 
     if(avocado.groves[N-size,12]<=0 | avocado.groves[N-size,5]<=0){
@@ -471,7 +474,7 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
     avocado.groves[N,9]<<-perc.fun
     avocado.groves[N,10]<<-is.there.disease.here(N,t) #is.there.disease.here function lines 174-186
     avocado.groves[N,11]<<-0
-    avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N) #how.many.heatlhy.trees.are.there function lines 128-137
+    avocado.groves[N,12]<<-how.many.healthy.trees.are.there(N,0) #how.many.heatlhy.trees.are.there function lines 128-137
     avocado.groves[N,13]<<-0
     
     if(avocado.groves[N-size,12]<=0 | avocado.groves[N-size,5]<=0){
@@ -524,6 +527,10 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
       if(money.pot<=0){
         money<-how.much.did.this.cost.monthly(N) #how.much.did.this.cost.monthly function lines 140-154
         return(money)
+      }
+      else if(avocado.groves[N-size,11]==0){ 
+        money<-how.much.did.this.cost.monthly(N) #how.much.did.this.cost.monthly function lines 140-154 
+        return(money) 
       }
       else{
         money.pot<<-money.pot-how.much.did.this.cost.monthly(N)*0.5 #how.much.did.this.cost.monthly function lines 140-154
