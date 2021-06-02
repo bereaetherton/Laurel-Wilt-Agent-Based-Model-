@@ -666,6 +666,7 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
     prop95.1 = sum(prop95.1[1:n5])/n5,
     prop95.2 = sum(prop95.1[1:n6])/n6,
     bob = bob.mat[2,1:10]
+    av.money<-  sum(avocado.groves[which(avocado.groves[(1+size*120):(size+size*120),3]!="dead"),5])/sum(avocado.groves[which(avocado.groves[(1+size*120):(size+size*120),3]!="dead"),4])
   )
   print(ULTI.LIST)
 }
