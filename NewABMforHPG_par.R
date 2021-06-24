@@ -380,15 +380,15 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
   
   #function 
   # calculating the new yearly costs:
-  how.much.did.this.cost.newyear<-function(N){
+  how.much.did.this.cost.newyear<-function(N,t){
     if(avocado.groves[N-size,3]=="low"){ #if you practice no management
-      money<-avocado.groves[[N-size,11]]*loss.from.yeild+avocado.groves[[N-size,13]]+stick(N)
+      money<-(avocado.groves[[N-size*t,12]]-avocado.groves[[N-size,12]])*loss.from.yeild+avocado.groves[[N-size,13]]+stick(N)
     } # costs(t+1)=sick.trees(t)*yearly.loss.from.yield + costs(t)
     else if(avocado.groves[N-size,3]=="medium"){ #if you practice medium management
-      money<-avocado.groves[[N-size,11]]*loss.from.yeild+(avocado.groves[[N-size,12]])*cost.per.tree.health.med+avocado.groves[[N-size,11]]*cost.per.tree.sick.medium+avocado.groves[[N-size,13]]
+      money<-(avocado.groves[[N-size*t,12]]-avocado.groves[[N-size,12]])*loss.from.yeild+(avocado.groves[[N-size,12]])*cost.per.tree.health.med+avocado.groves[[N-size,11]]*cost.per.tree.sick.medium+avocado.groves[[N-size,13]]
     } # costs(t+1)=healthy.trees(t)*cost.per.healthy.tree+sick.trees(t)*cost.per.sick.tree+costs(t) + sick.trees(t)*yearly.loss.from.yield
     else if(avocado.groves[N-size,3]=="high"){ #if you practice high management
-      money<-avocado.groves[[N-size,11]]*loss.from.yeild+(avocado.groves[[N-size,12]])*cost.per.tree.health.high+avocado.groves[[N-size,11]]*cost.per.tree.sick.high+avocado.groves[[N-size,13]]
+      money<-(avocado.groves[[N-size*t,12]]-avocado.groves[[N-size,12]])*loss.from.yeild+(avocado.groves[[N-size,12]])*cost.per.tree.health.high+avocado.groves[[N-size,11]]*cost.per.tree.sick.high+avocado.groves[[N-size,13]]
     } # healthy.trees(t)*cost.per.healthy.tree+sick.trees(t)*cost.per.sick.tree+costs(t) + sick.trees(t)*yearly.loss.from.yield
     else if(avocado.groves[N-size,3]=="dead"){ #if grove is ded
       money<-0
@@ -461,13 +461,13 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
       man<-"high"
     }
     # nested function
-    cash<-how.much.did.this.cost.newyear(N) #how.muc.did.this.cost.new.year function lines 157-171
+    cash<-how.much.did.this.cost.newyear(N,t) #how.muc.did.this.cost.new.year function lines 157-171
     # populating groves
     avocado.groves[N,1]<<-t
     avocado.groves[N,2]<<-avocado.groves[N-size*t,2]
     avocado.groves[N,3]<<-man
     avocado.groves[N,4]<<-avocado.groves[N-size*t,4]
-    avocado.groves[N,5]<<-avocado.groves[N-size,12]*51.22-cash #cash from above line 234
+    avocado.groves[N,5]<<-avocado.groves[N-size,5]+avocado.groves[N-size,12]*51.22-cash #cash from above line 234
     avocado.groves[N,6]<<-avocado.groves[N-size*t,6]
     avocado.groves[N,7]<<-perc.not
     avocado.groves[N,8]<<-perc.stu
@@ -571,9 +571,9 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
   jazz<-(final.trees/sum(avocado.groves[0:size.of.mat,12]))*100
   
   #calculate the total of each strat at the beginning and end of the simulation
-  carl<-matrix(0,nrow=10,ncol=4)
+  carl<-matrix(0,nrow=11,ncol=4)
   colnames(carl)<-c("low","medium","high","dead")
-  for(i in 1:10){
+  for(i in 1:11){
     carl[i,1]<-length(which(avocado.groves[(size.of.mat*(i-1)*12+1):(size.of.mat*(i-1)*12+size.of.mat),3]=="low"))
     carl[i,2]<-length(which(avocado.groves[(size.of.mat*(i-1)*12+1):(size.of.mat*(i-1)*12+size.of.mat),3]=="medium"))
     carl[i,3]<-length(which(avocado.groves[(size.of.mat*(i-1)*12+1):(size.of.mat*(i-1)*12+size.of.mat),3]=="high"))
@@ -605,34 +605,34 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
   
   #calculate 95th and 5th percentile of finances
   
-  money95.1<-order(avocado.groves[1:size.of.mat,5],decreasing=FALSE)
-  money95.1<-as.matrix(avocado.groves[money95.1,5])
-  n1<-round(0.95*length(money95.1))
+  #money95.1<-order(avocado.groves[1:size.of.mat,5],decreasing=FALSE)
+  #money95.1<-as.matrix(avocado.groves[money95.1,5])
+  #n1<-round(0.95*length(money95.1))
   #sum(money95.1[1:n1])/n1
-  n2<-round(0.05*length(money95.1))
+  #n2<-round(0.05*length(money95.1))
   #sum(money95.1[1:n2])/n2
-  money95.120<-order(avocado.groves[(size.of.mat*10*12+1):(size.of.mat*10*12+size.of.mat),5],decreasing=FALSE)
-  money95.120<-as.matrix(avocado.groves[money95.120,5])
-  n3<-round(0.95*length(money95.120))
+  #money95.120<-order(avocado.groves[(size.of.mat*10*12+1):(size.of.mat*10*12+size.of.mat),5],decreasing=FALSE)
+  #money95.120<-as.matrix(avocado.groves[money95.120,5])
+  #n3<-round(0.95*length(money95.120))
   #sum(money95.120[1:n3])/n3
-  n4<-round(0.05*length(money95.120))
+  #n4<-round(0.05*length(money95.120))
   #sum(money95.120[1:n4])/n4
   
   #calculate 95th and 5th percentile of grove infections
   
-  prop95.1<-avocado.groves[(size.of.mat*10*12+1):(size.of.mat*10*12+size.of.mat),12]/avocado.groves[1:size.of.mat,12]
-  prop95.1<-as.matrix(prop95.1)
-  for(i in 1:size.of.mat){
-    if(prop95.1[i]<0){
-      prop95.1[i]<-0
-    }
-  }
-  p<-order(prop95.1,decreasing=FALSE)
-  prop95.1<-prop95.1[p]
-  prop95.1<-as.matrix(prop95.1)
-  n5<-round(0.95*length(prop95.1))
+  #prop95.1<-avocado.groves[(size.of.mat*10*12+1):(size.of.mat*10*12+size.of.mat),12]/avocado.groves[1:size.of.mat,12]
+  #prop95.1<-as.matrix(prop95.1)
+  #for(i in 1:size.of.mat){
+  #  if(prop95.1[i]<0){
+  #    prop95.1[i]<-0
+  #  }
+  #}
+  #p<-order(prop95.1,decreasing=FALSE)
+  #prop95.1<-prop95.1[p]
+  #prop95.1<-as.matrix(prop95.1)
+  #n5<-round(0.95*length(prop95.1))
   #sum(prop95.1[1:n5])/n5
-  n6<-round(0.05*length(prop95.1))
+  #n6<-round(0.05*length(prop95.1))
   #sum(prop95.1[1:nA6])/n6
   
   #calculate percent infected at end by stubborneess
@@ -658,22 +658,90 @@ the.entire.process<-function(size.of.mat,t){   #read in the size of the matrix a
       bob.mat[2,i]<-sum(obo[,12])/sum(bob[,12])
     }
   }
+  
+  #income for low med high
+  l<-filter(avocado.groves[(1+size.of.mat*120):(size.of.mat+size.of.mat*120),],avocado.groves[(1+size.of.mat*120):(size.of.mat+size.of.mat*120),3]=="low")
+  m<-filter(avocado.groves[(1+size.of.mat*120):(size.of.mat+size.of.mat*120),],avocado.groves[(1+size.of.mat*120):(size.of.mat+size.of.mat*120),3]=="medium")
+  H<-filter(avocado.groves[(1+size.of.mat*120):(size.of.mat+size.of.mat*120),],avocado.groves[(1+size.of.mat*120):(size.of.mat+size.of.mat*120),3]=="high")
+
+  #income per stubbornness
+
+  stb.mat<-matrix(0,nrow=2,ncol=10)
+  for(i in stubborness.lower.bound:stubborness.upper.bound){
+    s<-filter(avocado.groves[(size.of.mat*120+1):(size.of.mat*120+size.of.mat),],avocado.groves[(size.of.mat*120+1):(size.of.mat*120+size.of.mat),6]==(i/10))
+    s<-filter(s,s[,5]!=-1)
+    stb.mat[1,i]<-(i/10)
+    stb.mat[2,i]<-sum(s[,5])/sum(s[,4])
+  }
+    
+  #finding the changes made at each year
+  
+  changes<-matrix(0,nrow=10,ncol=9)
+  for(i in 1:size){
+    c<-filter(avocado.groves,avocado.groves$node==i)
+    for(j in seq(12,120,12)){
+      if(c$treatment[j]=="high"&& c$treatment[j+1]=="medium"){
+        changes[j/12,1]=changes[j/12,1]+1
+  
+      }
+      else if(c$treatment[j]=="high" && c$treatment[j+1]=="low"){
+        changes[j/12,2]=changes[j/12,2]+1
+    
+      }
+      else if(c$treatment[j-11]=="high" && c$treatment[j+1]=="dead"){
+        changes[j/12,3]=changes[j/12,3]+1
+      
+      }
+      else if(c$treatment[j]=="medium" && c$treatment[j+1]=="low"){
+        changes[j/12,4]=changes[j/12,4]+1
+     
+      }
+      else if(c$treatment[j]=="medium" && c$treatment[j+1]=="high"){
+        changes[j/12,5]=changes[j/12,5]+1
+      
+      }
+      else if(c$treatment[j-11]=="medium" && c$treatment[j+1]=="dead"){
+        changes[j/12,6]=changes[j/12,6]+1
+     
+      }
+      else if(c$treatment[j]=="low" && c$treatment[j+1]=="medium"){
+        changes[j/12,7]=changes[j/12,7]+1
+    
+      }
+      else if(c$treatment[j]=="low" && c$treatment[j+1]=="high"){
+        changes[j/12,8]=changes[j/12,8]+1
+      
+      }
+      else if(c$treatment[j-11]=="low" && c$treatment[j+1]=="dead"){
+        changes[j/12,9]=changes[j/12,9]+1
+  
+      }
+    }
+  }
+  colnames(changes)<-c("hm","hl","hd","ml","mh","md","lm","lh","ld")
+
+  
   # SAVE LIST
   ULTI.LIST <- list()
   # (W=W)
   ULTI.LIST <- list( 
     trees = jazz, # % final trees remaining / initial trees 
-    strats.b = carl[1,1:3], # number of low,med,high strats at the beginning
-    strats.e = carl[10,1:3], # number of low,med,high strats at the end
-    x.stub = ab.stb[2,1:10], # number of average changes made per stubbornness  
-    money951.1 = sum(money95.1[1:n1])/n1, #
-    money952.1 = sum(money95.1[1:n2])/n2,
-    money951.120 = sum(money95.120[1:n3])/n3,
-    money952.120 = sum(money95.120[1:n4])/n4,
-    prop95.1 = sum(prop95.1[1:n5])/n5,
-    prop95.2 = sum(prop95.1[1:n6])/n6,
-    bob = bob.mat[2,1:10],
-    av.money=sum(avocado.groves[which(avocado.groves[(1+size*120):(size+size*120),3]!="dead"),5])/sum(avocado.groves[which(avocado.groves[(1+size*120):(size+size*120),3]!="dead"),4])
+    strats.b = carl[,], # number of low,med,high strats at the beginning
+    #strats.e = carl[10,1:3], # number of low,med,high strats at the end
+    avchanges = ab.stb[2,1:10], # number of average changes made per stubbornness  
+    #money951.1 = sum(money95.1[1:n1])/n1, #
+    #money952.1 = sum(money95.1[1:n2])/n2,
+    #money951.120 = sum(money95.120[1:n3])/n3,
+    #money952.120 = sum(money95.120[1:n4])/n4,
+    #prop95.1 = sum(prop95.1[1:n5])/n5,
+    #prop95.2 = sum(prop95.1[1:n6])/n6,
+    remainingtrees = bob.mat[2,1:10],
+    moneylow = sum(l[,5])/sum(l[,4]),
+    moneymed = sum(m[,5])/sum(m[,4]),
+    moneyhigh = sum(H[,5])/sum(H[,4]),
+    moneystb = stb.mat[2,1:10],
+    cng = changes[,]
+    #av.money=sum(avocado.groves[which(avocado.groves[(1+size*120):(size+size*120),3]!="dead"),5])/sum(avocado.groves[which(avocado.groves[(1+size*120):(size+size*120),3]!="dead"),4])
   )
   print(ULTI.LIST)
 }
@@ -684,7 +752,7 @@ library(doParallel)
 
 registerDoParallel(cores=12)  
 
-ULT.MAT <- foreach(W=seq_along(1:5)) %dopar% 
+ULT.MAT <- foreach(W=seq_along(1:48)) %dopar% 
   the.entire.process(size, 120) #this will simulate disease spread and 
 #growers decisions over 10 years (120 months)
 str(ULT.MAT)
@@ -692,7 +760,7 @@ str(ULT.MAT)
 #-------------------------------------------------------------------------------#
 
 NAME <- paste(ARG[1], ARG[2], ARG[3], ARG[4], ARG[5], ARG[6], sep="_")  
-save.image(paste0("/blue/garrett/betherton/LW2020/","ABMModel", NAME, ".RData"))
+save.image(paste0("/blue/garrett/betherton/LW2020/","ABMModel6.1", NAME, ".RData"))
 
 NAME <- paste(as.character(ARG[1]), 
               as.character(ARG[2]), 
@@ -703,7 +771,7 @@ NAME <- paste(as.character(ARG[1]),
 
 #saving image 
 
-save.image(paste0("../lw2021/","_ABMModel_", NAME, ".RData"))
+save.image(paste0("../lw2021/","_ABMModel6.1_", NAME, ".RData"))
 
 
 
