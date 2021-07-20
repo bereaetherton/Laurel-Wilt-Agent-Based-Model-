@@ -4,8 +4,11 @@ Authors: Berea Etheron,
 	 Ricardo I Alcala
 
 
+#ABMBashScript is the SLURM script used when submitting this job to UF's HiPerGator; this script reads in the ParameterTable.txt and runs the simulation for each paramter combination. 
 
 #distance.xlsx is a 1132x1132 matrix with the geodesic distances between groves.
+
+#NewABMforHpG_par.R is the entire simulation program. 
 
 #av.centers.xlsx is a matrix containing data from the Miami avocado groves.
 
