@@ -14,7 +14,7 @@ Authors: Berea Etheron,
 
 #ParameterTable is the list of parameters tested within the script. The parameters are the biophysical dispersal kernel, the social connectivity kernel, the lower bound of stubbornness tested, the upper bound, the money allocated to growers (carrots), and the percent tax on growers (sticks), respectively. 
 
-#the outs files are the the scripts produced when the program was run through UF's HiPerGator.
+#the outs files are the the scripts produced when the program was run through UF's HiPerGator - probably not worth the read but I guess you can if you want....
 
 #Download these two files, and run through the script NewABMforHpG_par.R
 
