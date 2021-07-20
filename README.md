@@ -5,32 +5,13 @@ Authors: Berea Etheron,
 
 
 
-#distance.xlsx is a 1132x1132 matrix with the geodesic distances between groves
+#distance.xlsx is a 1132x1132 matrix with the geodesic distances between groves.
 
-#av.centers.xlsx is a matrix containing data from the Miami avocado groves
+#av.centers.xlsx is a matrix containing data from the Miami avocado groves.
 
-#Download these two files, and run through the script ABMgit.R
+#ParameterTable is the list of parameters tested within the script. The parameters are the biophysical dispersal kernel, the social connectivity kernel, the lower bound of stubbornness tested, the upper bound, the money allocated to growers (carrots), and the percent tax on growers (sticks), respectively. 
 
-> some notes or TO-DOs:
+#the outs files are the the scripts produced when the program was run through UF's HiPerGator.
 
-1. this is hardcoded for this data specifically
-`My next steps are to make it so that you can read in a distance matrix and simulate management strategies`
+#Download these two files, and run through the script NewABMforHpG_par.R
 
-2. I also am working on incorperating carrots and sticks
-
-`They are not yet present in this simulation
-
-
-3. if all things go well with the HiPerGator, I will create a function that repeats this process over multiple simualtions
-
-`this step should be easy (praying all things go well with the HiPG'
-
-#### Happy Simulating :)
-
-### - Berea Etherton
-
-EDITS:
-
-(04/02/21): Diseased trees are cleared out at every new year; previously dead trees remained in a grove until the end of the simulation or until the grove has died completley
-
-(05/12/21): Code for high performance computing; ABM Rscript was updated with command arguments from a PatarmetTable.txt. READ.md was updated as markdown syntax.
