@@ -3,7 +3,7 @@
 Authors: Berea Etheron,
 	 Ricardo I Alcala
 
-An agent-based model designed to simulate epidemic expansion and social information dissemenination regarding how to manage an epidemic. This agent-based mode incoperates policy incentive structures (carrots and sticks) and the social behavior of stubbornness. This model was used to simulate the laurel wilt epidemic across Homestead Florida's avocado orchards. 
+An agent-based model designed to simulate epidemic expansion and social information dissemination regarding how to manage an epidemic. This agent-based mode incoperates policy incentive structures (carrots and sticks) and the social behavior of stubbornness. This model was used to simulate the laurel wilt epidemic across Homestead Florida's avocado orchards. 
 
 #ABMBashScript.sh is the SLURM script used when submitting this job to UF's HiPerGator; this script reads in the ParameterTable.txt and runs the simulation for each paramter combination. 
 
