@@ -20,5 +20,5 @@ module load R/3.6
 
 ARG=$(sed -n ${SLURM_ARRAY_TASK_ID}p ParameterTable.txt)
 echo ${ARG} 
-Rscript --vanilla NewABMforHPG_par.R ${ARG}
+Rscript --vanilla AgentBasedModel_LaurlWilt.R ${ARG}
 date
