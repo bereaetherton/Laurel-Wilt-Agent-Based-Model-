@@ -8,13 +8,8 @@ Authors: Berea Etheron,
 
 #distance.xlsx is a 1132x1132 matrix with the geodesic distances between groves.
 
-#NewABMforHpG_par.R is the entire simulation program. 
+#AgentBasedModel_LaurelWilt.R is the entire agent based model used for simulations
 
-#av.centers.xlsx is a matrix containing data from the Miami avocado groves.
+#av.centers.xlsx is a matrix containing data for Homestead's avocadp groves, used for simulations. This file is not available for privacy to the growers. 
 
-#ParameterTable is the list of parameters tested within the script. The parameters are the biophysical dispersal kernel, the social connectivity kernel, the lower bound of stubbornness tested, the upper bound, the money allocated to growers (carrots), and the percent tax on growers (sticks), respectively. 
-
-#the outs files are the the scripts produced when the program was run through UF's HiPerGator - probably not worth the read but I guess you can if you want....
-
-#Download these two files, and run through the script NewABMforHpG_par.R
-
+#ParameterTable.txt is the list of parameters tested within the script. The parameters are the biophysical dispersal kernel, the social connectivity kernel, the lower bound of stubbornness tested, the upper bound, the money allocated to growers (carrots), and the percent tax on growers (sticks), respectively. 
